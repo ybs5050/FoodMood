@@ -10,5 +10,6 @@ package navigation;
  * @author jdgra_000
  */
 public class NavController {
+    
   
 }

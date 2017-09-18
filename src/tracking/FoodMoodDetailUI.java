@@ -11,5 +11,19 @@ package tracking;
  * @author jdgra_000
  */
 public class FoodMoodDetailUI {
+    
+    /**
+     * This is the default constructor for the FoodMoodDetailUI class
+     */
+    public FoodMoodDetailUI() {
+        
+    }
+    
+    /**
+     * Resets the food mood detail user interface 
+     */
+    public void reset() {
+        
+    }
   
 }
