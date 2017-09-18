@@ -6,11 +6,30 @@
 package login;
 
 /**
- *
+ * FXML Controller Class
  * @author jdgra_000
  */
 public class LoginController {
     
+    /**
+     * Initializes the controller class
+     */
+    public void initialize() {
+        
+    }
     
+    /**
+     * initiate login sequence to the app
+     */
+    public void login() {
+        
+    }
+    
+    /**
+     * Validates text fields
+     */
+    public void vaildate() {
+        
+    }
   
 }
