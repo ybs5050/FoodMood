@@ -1,28 +1,21 @@
+package tracking;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package tracking;
 
 /**
- *
+ * FXML Controller Class
  * @author jdgra_000
  */
-public class FoodMoodListUI {
+public class FoodMoodDetailController {
     
     /**
-     * This is the default constructor for the FoodMoodListUI class
+     * Initializes the controller class
      */
-    public FoodMoodListUI() {
-        
-    }
-    
-    /**
-     * Displays a detailed information of selected FoodMood object
-     * Uses FoodMoodDetailUI class
-     */
-    public void showFoodMoodDetail() {
+    public void initialize() {
         
     }
     
@@ -32,4 +25,5 @@ public class FoodMoodListUI {
     public void reset() {
         
     }
+  
 }

@@ -6,9 +6,35 @@
 package userdata;
 
 /**
- *
+ * FXML Controller Class
  * @author jdgra_000
  */
 public class FoodMoodController {
+    
+    /**
+     * Initializes the controller class
+     */
+    public void initialize() {
+        
+    }
+    
+    /**
+     * Creates and returns a food mood object
+     * @param foodName
+     * @param description
+     * @return A FoodMood object
+     */
+    public FoodMood addFoodMood(String foodName, String description) {
+        return null;
+    
+    }
+    /**
+     * Validates text fields
+     */
+    public void vaildate() {
+        
+    }
+    
+    
   
 }

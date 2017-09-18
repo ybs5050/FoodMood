@@ -11,5 +11,25 @@ package navigation;
  */
 public class NavController {
     
+    /**
+     * This is the default constructor for the NavController class
+     */
+    public NavController() {
+        
+    }
+    
+    /**
+     * Display the status of the user interface
+     */
+    public void displayStatus() {
+        
+    }
+    
+    /**
+     * Resets the NavController object
+     */
+    public void reset() {
+        
+    }
   
 }
