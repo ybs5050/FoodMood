@@ -5,17 +5,22 @@
  */
 package userdata;
 
+import java.net.URL;
+import java.util.ResourceBundle;
+import javafx.fxml.Initializable;
+
 /**
  * FXML Controller Class
  * @author jdgra_000
  */
-public class FoodMoodController {
+public class FoodMoodController implements Initializable {
     
     /**
      * Initializes the controller class
      */
-    public void initialize() {
-        
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        System.out.println("FoodMood Window Initialized"); 
     }
     
     /**
@@ -25,16 +30,15 @@ public class FoodMoodController {
      * @return A FoodMood object
      */
     public FoodMood addFoodMood(String foodName, String description) {
-        return null;
-    
+        return new FoodMood(foodName);
     }
     /**
      * Validates text fields
+     * @param textField
+     * @return false if given text is not empty, true if given text is empty
      */
-    public void vaildate() {
-        
+    public boolean vaildate(String textField) {
+        return textField.trim().length() == 0;
     }
-    
-    
-  
+
 }
