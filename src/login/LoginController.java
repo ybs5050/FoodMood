@@ -5,31 +5,42 @@
  */
 package login;
 
+import java.net.URL;
+import java.util.ResourceBundle;
+import javafx.fxml.Initializable;
+
 /**
  * FXML Controller Class
  * @author jdgra_000
  */
-public class LoginController {
+public class LoginController implements Initializable{
     
     /**
      * Initializes the controller class
      */
-    public void initialize() {
-        
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        System.out.println("Login Window Initialized");
     }
     
     /**
      * initiate login sequence to the app
+     * @param userName Login username
+     * @param passWord Login password
      */
-    public void login() {
-        
+    public void login(String userName, String passWord) {
+        System.out.println(userName + " " + passWord);
     }
     
     /**
      * Validates text fields
+     * @param textField
+     * @return false if given text is not empty, true if given text is empty
      */
-    public void vaildate() {
-        
+    public boolean vaildate(String textField) {
+        return textField.trim().length() == 0;
     }
+
+    
   
 }
