@@ -7,21 +7,25 @@ package tracking;
  */
 
 import java.awt.event.ActionEvent;
+import java.net.URL;
 import java.util.ArrayList;
+import java.util.ResourceBundle;
+import javafx.fxml.Initializable;
        
 /**
  * FXML Controller Class
  * @author 
  */
-public class FoodMoodListController {
+public class FoodMoodListController implements Initializable {
     
     private ArrayList foodMoodList;
     
     /**
      * Initializes the controller class
      */
-    public void initialize() {
-        
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        System.out.println("FoodMoodList Window Initialized"); 
     }
     
     /**
@@ -29,7 +33,7 @@ public class FoodMoodListController {
      * @param event "Add Food Mood" button action
      */
     public void addFoodMood(ActionEvent event) {
-        
+        System.out.println(event.getID() + "add FoodMood action performed");
     }
     
     /**
@@ -37,7 +41,7 @@ public class FoodMoodListController {
      * @param event "Remove Food Mood" button action
      */
     public void removeFoodMood(ActionEvent event) {
-        
+        System.out.println(event.getID() + "remove FoodMood action performed");
     }
     
     /**
@@ -45,7 +49,7 @@ public class FoodMoodListController {
      * @param event "View Food Mood" selection from a list
      */
     public void viewFoodMood(ActionEvent event) {
-        
+        System.out.println(event.getID() + "view FoodMood action performed");
     }
     
     /**
@@ -53,7 +57,7 @@ public class FoodMoodListController {
      * @param event "Sort Food Mood list" button action
      */
     public void sortFoodMoodList(ActionEvent event) {
-        
+        System.out.println(event.getID() + "sort FoodMood action performed");
     }
     
     /**
@@ -61,7 +65,7 @@ public class FoodMoodListController {
      * @param event "Save Food Mood" button action
      */
     public void saveFoodMood(ActionEvent event) {
-        
+        System.out.println(event.getID() + "save FoodMood action performed");
     }
     
 }
