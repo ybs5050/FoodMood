@@ -16,9 +16,12 @@ public class Mood {
     
     /**
      * This is the default constructor for the FoodMood Class
+     * @param moodName
+     * @param moodDescription
      */ 
-    public Mood() {
-        
+    public Mood(String moodName, String moodDescription) {
+        this.moodName = moodName;
+        this.moodDescription = moodDescription;
     }
     
     /**
