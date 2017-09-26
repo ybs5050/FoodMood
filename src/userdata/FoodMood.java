@@ -17,9 +17,10 @@ public class FoodMood {
     
     /**
      * This is the default constructor for the FoodMood Class
+     * @param foodName Sets a food mood name of the FoodMood object
      */ 
-    public FoodMood() {
-        
+    public FoodMood(String foodName) {
+        this.foodName = foodName;
     }
     
     /**
