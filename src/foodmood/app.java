@@ -1,3 +1,5 @@
+package foodmood;
+
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -17,7 +19,7 @@ import login.LoginController;
  * @author 
  */
 public class app extends Application{
-    
+
     private static Stage base;
     private static Scene login;
     private static LoginController loginCntl;
@@ -37,7 +39,7 @@ public class app extends Application{
         loginCntl = loader.getController();
         base.setTitle("FoodMood - Login");
         login = new Scene(root);
-        base.setScene(login);
+        base.setScene(getLogin());
         base.show();
     }
     
@@ -48,5 +50,12 @@ public class app extends Application{
     public static void main(String[] args) {
         launch();
     }
+    
+    /**
+   * @return the login
+   */
+  public static Scene getLogin() {
+    return login;
+  }
     
 }

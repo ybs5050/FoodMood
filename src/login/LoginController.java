@@ -5,9 +5,19 @@
  */
 package login;
 
+import foodmood.app;
+import java.io.IOException;
 import java.net.URL;
+import java.util.HashMap;
 import java.util.ResourceBundle;
+import javafx.application.Application;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
 
 /**
  * FXML Controller Class
@@ -41,6 +51,7 @@ public class LoginController implements Initializable{
         return textField.trim().length() == 0;
     }
 
-    
-  
+    private void handleLogin(ActionEvent event) throws IOException {
+      app.getLogin().setRoot(FXMLLoader.load(getClass().getResource("MainMenu.fxml")));
+    }
 }
