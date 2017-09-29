@@ -18,7 +18,7 @@ import login.LoginController;
  *
  * @author 
  */
-public class app extends Application{
+public class app extends Application {
 
     private static Stage base;
     private static Scene login;
