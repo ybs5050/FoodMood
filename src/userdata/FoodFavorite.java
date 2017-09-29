@@ -15,7 +15,7 @@ import javafx.fxml.Initializable;
  *
  * @author jdgra_000
  */
-public class FoodController implements Initializable {
+public class FoodFavorite implements Initializable {
     
     private ArrayList<String> foodList;
   
