@@ -16,13 +16,15 @@ import javafx.fxml.Initializable;
  * @author jdgra_000
  */
 public class FoodController implements Initializable {
-  private ArrayList<String> foodList;
-  /**
-   * Initializes the controller class.
-   */
-  @Override
-  public void initialize(URL url, ResourceBundle rb) {
-    // TODO
-  }  
+    
+    private ArrayList<String> foodList;
+  
+    /**
+     * Initializes the controller class
+     */
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+        // TODO
+    }  
   
 }
