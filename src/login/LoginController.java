@@ -50,8 +50,13 @@ public class LoginController implements Initializable{
     public boolean vaildate(String textField) {
         return textField.trim().length() == 0;
     }
-
+    
+    /**
+     * Authenticate the user and show main menu UI
+     * @param event
+     * @throws IOException 
+     */
     private void handleLogin(ActionEvent event) throws IOException {
-      app.getLogin().setRoot(FXMLLoader.load(getClass().getResource("MainMenu.fxml")));
+        app.getLogin().setRoot(FXMLLoader.load(getClass().getResource("MainMenu.fxml")));
     }
 }
