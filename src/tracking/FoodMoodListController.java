@@ -32,40 +32,40 @@ public class FoodMoodListController implements Initializable {
      * Adds a food mood
      * @param event "Add Food Mood" button action
      */
-    public void addFoodMood(ActionEvent event) {
-        System.out.println(event.getID() + "add FoodMood action performed");
+    public void addFoodMood() {
+        System.out.println("add FoodMood action performed");
     }
     
     /**
      * Removes a food mood
      * @param event "Remove Food Mood" button action
      */
-    public void removeFoodMood(ActionEvent event) {
-        System.out.println(event.getID() + "remove FoodMood action performed");
+    public void removeFoodMood() {
+        System.out.println("remove FoodMood action performed");
     }
     
     /**
      * Displays food mood detail
      * @param event "View Food Mood" selection from a list
      */
-    public void viewFoodMood(ActionEvent event) {
-        System.out.println(event.getID() + "view FoodMood action performed");
+    public void viewFoodMood() {
+        System.out.println("view FoodMood action performed");
     }
     
     /**
      * Sorts food mood list
      * @param event "Sort Food Mood list" button action
      */
-    public void sortFoodMoodList(ActionEvent event) {
-        System.out.println(event.getID() + "sort FoodMood action performed");
+    public void sortFoodMoodList() {
+        System.out.println("sort FoodMood action performed");
     }
     
     /**
      * Saves food mood list
      * @param event "Save Food Mood" button action
      */
-    public void saveFoodMood(ActionEvent event) {
-        System.out.println(event.getID() + "save FoodMood action performed");
+    public void saveFoodMood() {
+        System.out.println("save FoodMood action performed");
     }
     
 }

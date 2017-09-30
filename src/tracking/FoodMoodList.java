@@ -32,6 +32,7 @@ public class FoodMoodList {
      */
     public void addFoodMoodToList(FoodMood newFoodMood, Mood newMood) {
         this.foodMoodList.put(newFoodMood, newMood);
+        System.out.println("FoodMood has been added!");
     }
     
     /**
