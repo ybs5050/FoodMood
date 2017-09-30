@@ -30,8 +30,8 @@ public class MainMenuController implements Initializable {
      * Opens a new scene from FoodMoodList class
      * @param event "View Mood Food" button action
      */
-    public void viewFoodMoodList(ActionEvent event) {
-        System.out.println(event.getID() + "View Food Mood List event occured");
+    public void viewFoodMoodList() {
+        System.out.println("View Food Mood List event occured");
     }
     
 }
