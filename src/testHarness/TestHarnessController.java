@@ -6,8 +6,7 @@ import tracking.FoodMoodListController;
 
 /**
  *
- * @author jamie <jxb488@psu.edu>
- * Created on Sep 30, 2017, 10:15:37 AM
+ * @author 
  */
 public class TestHarnessController {
     private LoginController lc;
