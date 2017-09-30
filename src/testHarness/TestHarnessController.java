@@ -1,8 +1,8 @@
 package testHarness;
 
 import login.LoginController;
-import tracking.FoodMoodList;
 import navigation.MainMenuController;
+import tracking.FoodMoodListController;
 
 /**
  *
@@ -12,10 +12,12 @@ import navigation.MainMenuController;
 public class TestHarnessController {
     private LoginController lc;
     private MainMenuController mmc;
+    private FoodMoodListController fmlc;
     
     TestHarnessController() {
         lc = new LoginController();
         mmc = new MainMenuController();
+        fmlc = new FoodMoodListController();
         getLogin(); 
 }
     public void getLogin(){
@@ -32,6 +34,10 @@ public class TestHarnessController {
     }
     
     public void addFM(){
-        
+        fmlc.addFoodMood();
+        fmlc.removeFoodMood();
+        fmlc.saveFoodMood();
+        fmlc.sortFoodMoodList();
+        fmlc.viewFoodMood();
     }
 }
