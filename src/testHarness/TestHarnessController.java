@@ -2,6 +2,7 @@ package testHarness;
 
 import login.LoginController;
 import tracking.FoodMoodList;
+import navigation.MainMenuController;
 
 /**
  *
@@ -10,13 +11,15 @@ import tracking.FoodMoodList;
  */
 public class TestHarnessController {
     private LoginController lc;
-    private FoodMoodList fml;
+    private MainMenuController mmc;
     
     TestHarnessController() {
+        lc = new LoginController();
+        mmc = new MainMenuController();
         getLogin(); 
 }
     public void getLogin(){
-        lc = new LoginController();
+
         String userName = "testuser";
         String password = "password";
         lc.login(userName, password);
@@ -24,8 +27,8 @@ public class TestHarnessController {
     }
     
     public void viewFML(){
-
-        
+        mmc.viewFoodMoodList();
+        addFM();
     }
     
     public void addFM(){
