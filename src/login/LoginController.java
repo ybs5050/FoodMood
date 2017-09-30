@@ -28,8 +28,8 @@ public class LoginController implements Initializable{
      * @param userName Login username
      * @param passWord Login password
      */
-    public void login(String userName, String passWord) {
-        System.out.println(userName + " " + passWord);
+    public static void login(String userName, String passWord) {
+        System.out.println("Login success: " + userName + " " + passWord);
     }
     
     /**
