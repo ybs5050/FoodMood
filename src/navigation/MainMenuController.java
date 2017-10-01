@@ -5,6 +5,7 @@ import java.awt.event.ActionEvent;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.Initializable;
+ 
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -23,7 +24,10 @@ public class MainMenuController implements Initializable {
      */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        System.out.println("MainMenu Window Initialized"); 
+        System.out.println("MainMenu Window Initialized"); //successful call
+        //TEST CODE for application flow
+        viewFoodMoodList();
+        
     }
     
     /**

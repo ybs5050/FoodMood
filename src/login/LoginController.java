@@ -5,19 +5,12 @@
  */
 package login;
 
-import foodmood.app;
 import java.io.IOException;
 import java.net.URL;
-import java.util.HashMap;
 import java.util.ResourceBundle;
-import javafx.application.Application;
 import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+//import navigation.MainMenuController; //TODO: Update handleLogin, then DELETE
 
 /**
  * FXML Controller Class
@@ -36,10 +29,17 @@ public class LoginController implements Initializable{
     /**
      * initiate login sequence to the app
      * @param userName Login username
-     * @param passWord Login password
+     * @param password Login password
      */
-    public void login(String userName, String passWord) {
-        System.out.println("Login success: " + userName + " " + passWord);
+    public void login(String userName, String password) {
+      if(validate(password)){
+        System.out.println("Login successful: UserName=" + userName + 
+            " Password=" + password);
+      }  
+      else{
+        System.out.println("Failed Login Attempt: UserName=" + userName + 
+            " Password=" + password);
+      }
     }
     
     /**
@@ -47,8 +47,11 @@ public class LoginController implements Initializable{
      * @param textField
      * @return false if given text is not empty, true if given text is empty
      */
-    public boolean vaildate(String textField) {
-        return textField.trim().length() == 0;
+    public boolean validate(String textField) {
+      //test data and output 
+      String testPass = "password";
+      System.out.println("Password Validated: " + (textField.compareTo(testPass) == 0));
+      return textField.compareTo(testPass) == 0;
     }
     
     /**
@@ -56,7 +59,10 @@ public class LoginController implements Initializable{
      * @param event
      * @throws IOException 
      */
+    //
     private void handleLogin(ActionEvent event) throws IOException {
-        app.getLogin().setRoot(FXMLLoader.load(getClass().getResource("MainMenu.fxml")));
+        //app.getLogin().setRoot(FXMLLoader.load(getClass().getResource("MainMenu.fxml")));
+        //TODO: Replace test code below
+        System.out.println("Login Button Pressed");
     }
 }

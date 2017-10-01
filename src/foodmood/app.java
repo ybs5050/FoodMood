@@ -47,9 +47,9 @@ public class app extends Application {
      * Main method for the execution of this application
      * @param args None for normal use
      */
-    public static void main(String[] args) {
-        launch();
-    }
+    //public static void main(String[] args) {
+    //    launch();
+    //}
     
    /**
    * @return the login
