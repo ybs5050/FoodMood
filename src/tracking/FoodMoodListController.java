@@ -17,7 +17,7 @@ import javafx.fxml.Initializable;
  * @author 
  */
 public class FoodMoodListController implements Initializable {
-    
+
     private ArrayList foodMoodList;
     
     /**
@@ -32,7 +32,7 @@ public class FoodMoodListController implements Initializable {
      * Adds a food mood
      * @param event "Add Food Mood" button action
      */
-    public void addFoodMood() {
+    public void addFoodMood(String[] foodMood) {
         System.out.println("add FoodMood action performed");
     }
     
@@ -40,7 +40,7 @@ public class FoodMoodListController implements Initializable {
      * Removes a food mood
      * @param event "Remove Food Mood" button action
      */
-    public void removeFoodMood() {
+    public void removeFoodMood(int index) {
         System.out.println("remove FoodMood action performed");
     }
     
@@ -48,15 +48,17 @@ public class FoodMoodListController implements Initializable {
      * Displays food mood detail
      * @param event "View Food Mood" selection from a list
      */
-    public void viewFoodMood() {
-        System.out.println("view FoodMood action performed");
+    public void viewFoodMood() throws InstantiationException, IllegalAccessException {
+      FoodMoodDetailController.class.newInstance().initialize(null, null);
+      System.out.println("view FoodMood Detailed List action performed");
     }
     
     /**
      * Sorts food mood list
+     * @param foodMoodList
      * @param event "Sort Food Mood list" button action
      */
-    public void sortFoodMoodList() {
+    public void sortFoodMoodList(ArrayList foodMoodList) {
         System.out.println("sort FoodMood action performed");
     }
     
@@ -68,4 +70,21 @@ public class FoodMoodListController implements Initializable {
         System.out.println("save FoodMood action performed");
     }
     
+    /**
+   * @return the foodMoodList
+   */
+  public ArrayList getFoodMoodList() {
+    return foodMoodList;
+  }
+
+  /**
+   * @param foodMoodList the foodMoodList to set
+   */
+  public void setFoodMoodList(ArrayList foodMoodList) {
+    this.foodMoodList = foodMoodList;
+  }
+    
+  public void printList(ArrayList foodMoodArray){
+    System.out.println("FoodMoodList Contains These Objects: " + foodMoodArray);
+  }  
 }

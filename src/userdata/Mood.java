@@ -23,6 +23,10 @@ public class Mood {
         this.moodName = moodName;
         this.moodDescription = moodDescription;
     }
+    //default constructor
+    public Mood(){
+      this("", "");
+    }
     
     /**
      * Returns the object's member moodDescription

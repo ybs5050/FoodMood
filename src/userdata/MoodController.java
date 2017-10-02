@@ -6,6 +6,7 @@
 package userdata;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.fxml.Initializable;
 
@@ -14,12 +15,15 @@ import javafx.fxml.Initializable;
  * @author jdgra_000
  */
 public class MoodController implements Initializable {
+  
+    private ArrayList<Mood> moodList = new ArrayList<>();
+    private Mood mood = new Mood();
     /**
      * Initializes the controller class
      */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
     /**
@@ -28,16 +32,17 @@ public class MoodController implements Initializable {
      * @param moodDescription 
      */
     public void addMood(String moodName, String moodDescription) {
-        System.out.println("Add Mood action performed");
+      //String[] newMoodItem = {moodName, moodDescription};
+      //moodList.add(newMoodItem);
+      System.out.println("Add Mood action performed");
     }
+
+  /**
+   * @return the moodList
+   */
+  public ArrayList<Mood> getMoodList() {
+    System.out.println("Get Mood List Action performed.");
+    return moodList;
+  }
     
-    /**
-     * Validates text fields
-     * @param textField
-     * @return false if given text is not empty, true if given text is empty
-     */
-    public boolean vaildate(String textField) {
-        return textField.trim().length() == 0;
-    }
-  
 }

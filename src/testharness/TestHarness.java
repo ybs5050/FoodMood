@@ -1,4 +1,4 @@
-package testHarness;
+package testharness;
 
 import java.awt.event.ActionEvent;
 import java.util.EventListener;

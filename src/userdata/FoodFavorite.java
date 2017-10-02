@@ -16,8 +16,8 @@ import javafx.fxml.Initializable;
  * @author jdgra_000
  */
 public class FoodFavorite implements Initializable {
-    
-    private ArrayList<String> foodList;
+
+    private ArrayList<String> foodList = new ArrayList<>();
   
     /**
      * Initializes the controller class
@@ -26,5 +26,22 @@ public class FoodFavorite implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }  
-  
+    
+    public void addFavoriteFood(String favFood){
+      foodList.add(favFood);
+      System.out.println("Add Food Type successful");
+    }
+    
+    /**
+    * @return the foodList
+    */
+    public ArrayList<String> getFoodList() {
+      System.out.println("Get Favorite Food List successful");
+      return foodList;
+    }
+
+  public void removeFavoriteFood(int index) {
+    foodList.remove(index);
+    System.out.println("Remove Food Type successful");
+  }
 }
