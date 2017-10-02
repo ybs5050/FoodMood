@@ -11,8 +11,10 @@ import tracking.FoodMoodList;
  */
 public class TestHarness {
     
+    /*
     public static void main(String[] args) {
         TestHarnessController thc = new TestHarnessController();
     }
+    */
 }
 

@@ -7,6 +7,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import login.LoginController;
+import database.Database;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -41,15 +42,17 @@ public class app extends Application {
         login = new Scene(root);
         base.setScene(getLogin());
         base.show();
+        // Establish a connection to the Java DB schema
+        Database.DatabaseHandler db = new Database.DatabaseHandler();
     }
     
     /**
      * Main method for the execution of this application
      * @param args None for normal use
      */
-    //public static void main(String[] args) {
-    //    launch();
-    //}
+    public static void main(String[] args) {
+        launch();
+    }
     
    /**
    * @return the login
