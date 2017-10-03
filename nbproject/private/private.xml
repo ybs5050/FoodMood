@@ -2,14 +2,6 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/D:/GIT/FoodMood/src/app.java</file>
-            <file>file:/D:/GIT/FoodMood/src/login/LoginController.java</file>
-            <file>file:/D:/GIT/FoodMood/src/tracking/FoodMoodDetailController.java</file>
-            <file>file:/D:/GIT/FoodMood/src/tracking/FoodMoodList.java</file>
-            <file>file:/D:/GIT/FoodMood/src/tracking/FoodMoodListController.java</file>
-            <file>file:/D:/GIT/FoodMood/src/navigation/MainMenu.fxml</file>
-            <file>file:/D:/GIT/FoodMood/src/navigation/MainMenuController.java</file>
-        </group>
+        <group/>
     </open-files>
 </project-private>
