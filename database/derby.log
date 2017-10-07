@@ -1,8 +1,8 @@
-Tue Oct 03 08:20:01 EDT 2017 : Apache Derby 네트워크 서버 - 10.11.1.2 - (1629631)이(가) 시작되어 1527 포트에서 접속을 승인할 준비가 되었습니다.
+Sat Oct 07 11:34:46 EDT 2017 : Apache Derby 네트워크 서버 - 10.11.1.2 - (1629631)이(가) 시작되어 1527 포트에서 접속을 승인할 준비가 되었습니다.
 ----------------------------------------------------------------
-Tue Oct 03 08:20:01 EDT 2017:
+Sat Oct 07 11:34:48 EDT 2017:
  클래스 로더 sun.misc.Launcher$AppClassLoader@1d44bcfa이(가) 있는 데이터베이스 디렉토리 C:\Users\Asus\Documents\GitHub\FoodMood\database\foodmood에서 
- Derby 버전 The Apache Software Foundation - Apache Derby - 10.11.1.2 - (1629631): 인스턴스 a816c00e-015e-e22d-b9f5-ffffb3cfbe20 부팅 중 
+ Derby 버전 The Apache Software Foundation - Apache Derby - 10.11.1.2 - (1629631): 인스턴스 a816c00e-015e-f779-77e6-ffffb3cfbe20 부팅 중 
 file:/C:/Program%20Files/Java/jdk1.8.0_101/db/lib/derby.jar에서 로드됨
 java.vendor=Oracle Corporation
 java.runtime.version=1.8.0_101-b13
@@ -12,52 +12,3 @@ os.arch=amd64
 os.version=10.0
 derby.system.home=C:\Users\Asus\Documents\GitHub\FoodMood\database
 데이터베이스 클래스 로더가 시작됨 - derby.database.classpath=''
-Tue Oct 03 08:20:18 EDT 2017 Thread[DRDAConnThread_3,5,main] Cleanup action starting
-java.sql.SQLException: 'savage_enigma' 데이터베이스를 찾을 수 없습니다.
-	at org.apache.derby.impl.jdbc.SQLExceptionFactory.getSQLException(Unknown Source)
-	at org.apache.derby.impl.jdbc.SQLExceptionFactory.getSQLException(Unknown Source)
-	at org.apache.derby.impl.jdbc.Util.generateCsSQLException(Unknown Source)
-	at org.apache.derby.impl.jdbc.Util.generateCsSQLException(Unknown Source)
-	at org.apache.derby.impl.jdbc.EmbedConnection.newSQLException(Unknown Source)
-	at org.apache.derby.impl.jdbc.EmbedConnection.handleDBNotFound(Unknown Source)
-	at org.apache.derby.impl.jdbc.EmbedConnection.<init>(Unknown Source)
-	at org.apache.derby.jdbc.InternalDriver.getNewEmbedConnection(Unknown Source)
-	at org.apache.derby.jdbc.InternalDriver.connect(Unknown Source)
-	at org.apache.derby.jdbc.InternalDriver.connect(Unknown Source)
-	at org.apache.derby.jdbc.EmbeddedDriver.connect(Unknown Source)
-	at org.apache.derby.impl.drda.Database.makeConnection(Unknown Source)
-	at org.apache.derby.impl.drda.DRDAConnThread.getConnFromDatabaseName(Unknown Source)
-	at org.apache.derby.impl.drda.DRDAConnThread.verifyUserIdPassword(Unknown Source)
-	at org.apache.derby.impl.drda.DRDAConnThread.parseSECCHK(Unknown Source)
-	at org.apache.derby.impl.drda.DRDAConnThread.parseDRDAConnection(Unknown Source)
-	at org.apache.derby.impl.drda.DRDAConnThread.processCommands(Unknown Source)
-	at org.apache.derby.impl.drda.DRDAConnThread.run(Unknown Source)
-Caused by: ERROR XJ004: 'savage_enigma' 데이터베이스를 찾을 수 없습니다.
-	at org.apache.derby.iapi.error.StandardException.newException(Unknown Source)
-	at org.apache.derby.impl.jdbc.SQLExceptionFactory.wrapArgsForTransportAcrossDRDA(Unknown Source)
-	... 18 more
-============= begin nested exception, level (1) ===========
-ERROR XJ004: 'savage_enigma' 데이터베이스를 찾을 수 없습니다.
-	at org.apache.derby.iapi.error.StandardException.newException(Unknown Source)
-	at org.apache.derby.impl.jdbc.SQLExceptionFactory.wrapArgsForTransportAcrossDRDA(Unknown Source)
-	at org.apache.derby.impl.jdbc.SQLExceptionFactory.getSQLException(Unknown Source)
-	at org.apache.derby.impl.jdbc.SQLExceptionFactory.getSQLException(Unknown Source)
-	at org.apache.derby.impl.jdbc.Util.generateCsSQLException(Unknown Source)
-	at org.apache.derby.impl.jdbc.Util.generateCsSQLException(Unknown Source)
-	at org.apache.derby.impl.jdbc.EmbedConnection.newSQLException(Unknown Source)
-	at org.apache.derby.impl.jdbc.EmbedConnection.handleDBNotFound(Unknown Source)
-	at org.apache.derby.impl.jdbc.EmbedConnection.<init>(Unknown Source)
-	at org.apache.derby.jdbc.InternalDriver.getNewEmbedConnection(Unknown Source)
-	at org.apache.derby.jdbc.InternalDriver.connect(Unknown Source)
-	at org.apache.derby.jdbc.InternalDriver.connect(Unknown Source)
-	at org.apache.derby.jdbc.EmbeddedDriver.connect(Unknown Source)
-	at org.apache.derby.impl.drda.Database.makeConnection(Unknown Source)
-	at org.apache.derby.impl.drda.DRDAConnThread.getConnFromDatabaseName(Unknown Source)
-	at org.apache.derby.impl.drda.DRDAConnThread.verifyUserIdPassword(Unknown Source)
-	at org.apache.derby.impl.drda.DRDAConnThread.parseSECCHK(Unknown Source)
-	at org.apache.derby.impl.drda.DRDAConnThread.parseDRDAConnection(Unknown Source)
-	at org.apache.derby.impl.drda.DRDAConnThread.processCommands(Unknown Source)
-	at org.apache.derby.impl.drda.DRDAConnThread.run(Unknown Source)
-============= end nested exception, level (1) ===========
-Cleanup action completed
-Tue Oct 03 08:20:18 EDT 2017 Thread[DRDAConnThread_3,5,main] (DATABASE = savage_enigma), (DRDAID = {3}), 'savage_enigma' 데이터베이스를 찾을 수 없습니다.

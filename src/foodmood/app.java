@@ -6,7 +6,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import login.LoginController;
 import database.Database;
 
 /*
@@ -23,7 +22,6 @@ public class app extends Application {
 
     private static Stage base;
     private static Scene login;
-    private static LoginController loginCntl;
     
     
     /**
@@ -37,7 +35,6 @@ public class app extends Application {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/login/Login.fxml"));
         Parent root = loader.load();
         base = primaryStage;
-        loginCntl = loader.getController();
         base.setTitle("FoodMood - Login");
         login = new Scene(root);
         base.setScene(getLogin());
