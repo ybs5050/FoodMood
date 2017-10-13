@@ -15,7 +15,7 @@ import userdata.MoodController;
  * @author
  */
 public class TestHarnessController {
-
+/*
   private LoginController lc;
   private MainMenuController mmc;
   private FoodMoodListController fmlc;
@@ -108,4 +108,5 @@ public class TestHarnessController {
     ff.addFavoriteFood(favFood);
     ff.removeFavoriteFood(index);
   }
+*/
 }
