@@ -89,13 +89,8 @@ public class Database {
          * @throws SQLException 
          */
         public static void closeConnection() throws SQLException {
-            try {
-                conn.close();
-                stmt.close();
-            } catch (SQLException except) {
-                System.out.println("Error occured: " + except.toString());
-            }
-            
+            conn = null;
+            stmt = null;
         }
         
         /**
@@ -151,6 +146,7 @@ public class Database {
                 return false;
             }
         }
+       
         
         /**
          * Attepts to create a mood to the database

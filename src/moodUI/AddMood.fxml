@@ -14,6 +14,7 @@
             <Font size="31.0" />
          </font>
       </Text>
+      <!-- Input prompt Implementation -->
       <TextField fx:id="addMood_moodName" layoutX="21.0" layoutY="58.0" prefHeight="23.0" prefWidth="268.0" promptText="Enter Mood Name" />
       <TextArea fx:id="addMood_moodDescription" layoutX="21.0" layoutY="90.0" prefHeight="48.0" prefWidth="268.0" promptText="Enter Mood Description (250 Characters Max)" />
       <TextField fx:id="addMood_moodTimeOccured" layoutX="21.0" layoutY="176.0" prefHeight="23.0" prefWidth="268.0" promptText="Enter Time Occured (HH:mm)" />

@@ -15,6 +15,7 @@
             <Font size="23.0" />
          </font>
       </Text>
+      <!-- Input prompt Implementation -->
       <TextField fx:id="login_username" layoutX="26.0" layoutY="53.0" prefHeight="23.0" prefWidth="278.0" promptText="Enter username" />
       <PasswordField fx:id="login_password" layoutX="26.0" layoutY="83.0" prefHeight="23.0" prefWidth="278.0" promptText="Enter password" />
       <Button fx:id="login_loginButton" layoutX="26.0" layoutY="118.0" mnemonicParsing="false" onAction="#handleLogin" prefHeight="23.0" prefWidth="278.0" text="Login" />

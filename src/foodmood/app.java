@@ -7,6 +7,11 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import database.Database;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javafx.event.EventHandler;
+import javafx.stage.WindowEvent;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -39,6 +44,19 @@ public class app extends Application {
         login = new Scene(root);
         base.setScene(getLogin());
         base.show();
+        // Decorator Implementation
+        base.setOnCloseRequest(new EventHandler<WindowEvent>() {
+            @Override
+            public void handle(WindowEvent event) {
+                try {
+                    // Close DB Connection 
+                    System.out.println("Closing DB connection..");
+                    database.Database.DatabaseHandler.closeConnection();
+                } catch (SQLException except) {
+                    System.out.println("Error occured: " + except.toString());
+                }
+            }
+        });  
         // Establish a connection to the Java DB schema
         Database.DatabaseHandler db = new Database.DatabaseHandler();
     }
