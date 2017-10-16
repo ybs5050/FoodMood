@@ -12,3 +12,9 @@ os.arch=amd64
 os.version=10.0
 derby.system.home=C:\Users\Asus\Documents\GitHub\FoodMood\database
 Database Class Loader started - derby.database.classpath=''
+----------------------------------------------------------------
+Mon Oct 16 00:12:34 EDT 2017: Shutting down Derby engine
+----------------------------------------------------------------
+Mon Oct 16 00:12:34 EDT 2017:
+Shutting down instance a816c00e-015f-2353-f64a-ffffb3cfbe20 on database directory C:\Users\Asus\Documents\GitHub\FoodMood\database\foodmood with class loader sun.misc.Launcher$AppClassLoader@1d44bcfa 
+----------------------------------------------------------------
