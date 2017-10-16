@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="241.0" prefWidth="310.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="moodUI.AddMoodController">
+   <children>
+      <Text layoutX="14.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Add Mood" wrappingWidth="183.12109375">
+         <font>
+            <Font size="31.0" />
+         </font>
+      </Text>
+      <TextField fx:id="addMood_moodName" layoutX="21.0" layoutY="58.0" prefHeight="23.0" prefWidth="268.0" promptText="Enter Mood Name" />
+      <TextArea fx:id="addMood_moodDescription" layoutX="21.0" layoutY="90.0" prefHeight="48.0" prefWidth="268.0" promptText="Enter Mood Description (250 Characters Max)" />
+      <TextField fx:id="addMood_moodTimeOccured" layoutX="21.0" layoutY="176.0" prefHeight="23.0" prefWidth="268.0" promptText="Enter Time Occured (HH:mm)" />
+      <Button fx:id="addMood_addMood" layoutX="21.0" layoutY="206.0" mnemonicParsing="false" onAction="#handleAddMood" prefHeight="23.0" prefWidth="268.0" text="Add" />
+      <ComboBox fx:id="addMood_moodSeverity" layoutX="21.0" layoutY="145.0" prefHeight="23.0" prefWidth="268.0" promptText="Select Mood Severity" />
+   </children>
+</AnchorPane>
