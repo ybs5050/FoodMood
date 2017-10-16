@@ -115,6 +115,7 @@ public class MoodController implements Initializable {
             base.setScene(main);
             base.show();
             // Detect addmood scene is closing and refresh table
+            // Decorator
             base.setOnCloseRequest(new EventHandler<WindowEvent>() {
             @Override
             public void handle(WindowEvent event) {

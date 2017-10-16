@@ -1,9 +1,9 @@
-Wed Oct 11 22:48:17 EDT 2017 : Apache Derby 네트워크 서버 - 10.11.1.2 - (1629631)이(가) 시작되어 1527 포트에서 접속을 승인할 준비가 되었습니다.
+Sun Oct 15 23:53:49 EDT 2017 : Apache Derby Network Server - 10.11.1.2 - (1629631) started and ready to accept connections on port 1527
 ----------------------------------------------------------------
-Wed Oct 11 22:48:22 EDT 2017:
- 클래스 로더 sun.misc.Launcher$AppClassLoader@1d44bcfa이(가) 있는 데이터베이스 디렉토리 C:\Users\Asus\Documents\GitHub\FoodMood\database\foodmood에서 
- Derby 버전 The Apache Software Foundation - Apache Derby - 10.11.1.2 - (1629631): 인스턴스 a816c00e-015f-0e7b-865f-ffffb3cfbe20 부팅 중 
-file:/C:/Program%20Files/Java/jdk1.8.0_101/db/lib/derby.jar에서 로드됨
+Sun Oct 15 23:53:49 EDT 2017:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.11.1.2 - (1629631): instance a816c00e-015f-2350-f549-ffffb3cfbe20 
+on database directory C:\Users\Asus\Documents\GitHub\FoodMood\database\foodmood with class loader sun.misc.Launcher$AppClassLoader@1d44bcfa 
+Loaded from file:/C:/Program%20Files/Java/jdk1.8.0_101/db/lib/derby.jar
 java.vendor=Oracle Corporation
 java.runtime.version=1.8.0_101-b13
 user.dir=C:\Program Files\Java\jdk1.8.0_101\db
@@ -11,9 +11,4 @@ os.name=Windows 10
 os.arch=amd64
 os.version=10.0
 derby.system.home=C:\Users\Asus\Documents\GitHub\FoodMood\database
-데이터베이스 클래스 로더가 시작됨 - derby.database.classpath=''
-----------------------------------------------------------------
-Thu Oct 12 21:20:45 EDT 2017: Derby 엔진 종료
-----------------------------------------------------------------
-Thu Oct 12 21:20:45 EDT 2017:
-클래스 로더 sun.misc.Launcher$AppClassLoader@1d44bcfa이(가) 있는 데이터베이스 디렉토리 C:\Users\Asus\Documents\GitHub\FoodMood\database\foodmood의 인스턴스 a816c00e-015f-0e7b-865f-ffffb3cfbe20 종료 
+Database Class Loader started - derby.database.classpath=''
