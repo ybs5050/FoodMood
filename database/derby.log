@@ -66,3 +66,9 @@ ERROR 28502: 사용자 이름 '''이(가) 부적합합니다.
 ============= end nested exception, level (1) ===========
 Cleanup action completed
 Mon Oct 23 15:45:27 EDT 2017 Thread[DRDAConnThread_2,5,main] (DATABASE = foodmood), (DRDAID = {2}), 사용자 이름 '''이(가) 부적합합니다. 
+----------------------------------------------------------------
+Mon Oct 23 16:43:35 EDT 2017: Shutting down Derby engine
+----------------------------------------------------------------
+Mon Oct 23 16:43:35 EDT 2017:
+Shutting down instance a816c00e-015f-4abb-6df5-ffffb3cfbe20 on database directory C:\Users\Asus\Documents\GitHub\FoodMood\database\foodmood with class loader sun.misc.Launcher$AppClassLoader@1d44bcfa 
+----------------------------------------------------------------

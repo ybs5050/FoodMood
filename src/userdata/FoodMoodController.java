@@ -509,11 +509,17 @@ public class FoodMoodController implements Initializable {
             ArrayList<String> content = new ArrayList<>();
             int index = 1;
             for(FoodMood temp : foodMoodList) {
-                writer.println("FoodMood #" + Integer.toString(index) + ".--------------------" );
+                writer.println("FoodMood #" + Integer.toString(index) + ".-------------------------------------------------------------" );
                 writer.println(temp.getFoodMoodSummary());
                 index += 1;
             }
             writer.close();
+            // Update successful
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Success");
+            alert.setHeaderText("Please check \"reports\" folder");
+            alert.setContentText("Report Generated. File Name: " + fileName);
+            alert.showAndWait();
         } 
     }
     
