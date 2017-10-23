@@ -75,6 +75,10 @@ public class MainMenuController implements Initializable {
         }
     }
     
+    /**
+     * Opens a new scene to view food mood list
+     * @param event 
+     */
     @FXML
     private void viewFoodMoodList(javafx.event.ActionEvent event) {
         System.out.println("View Food Mood List event occured");
