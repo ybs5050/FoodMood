@@ -1,5 +1,7 @@
 package userdata;
 
+import java.util.Date;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -14,6 +16,7 @@ public class FoodMood {
     
     private int foodMoodID;
     private String foodName;
+    private Date foodMoodDate;
     
     /**
      * This is the default constructor for the FoodMood Class
@@ -46,6 +49,10 @@ public class FoodMood {
     public String getFoodName() {
         return this.foodName;
     }
+
+  public Date getFoodMoodDate() {
+    return this.foodMoodDate;
+  }
     
     
 }

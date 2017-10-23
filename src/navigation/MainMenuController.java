@@ -75,4 +75,21 @@ public class MainMenuController implements Initializable {
         }
     }
     
+    @FXML
+    private void viewFoodMoodList(javafx.event.ActionEvent event) {
+        System.out.println("View Food Mood List event occured");
+        try {
+            // Loads FXML resources and create,display a FXML scene 
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/userdata/FoodMood.fxml"));
+            Parent root = loader.load();
+            Stage base = new Stage();
+            base.setTitle("FoodMood - Food/Mood List");
+            Scene main = new Scene(root);
+            base.setScene(main);
+            base.show();
+        } catch (IOException except) {
+            System.out.println("Error occured: " + except.toString());
+        }
+    }
+    
 }
