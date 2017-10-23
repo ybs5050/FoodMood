@@ -44,9 +44,8 @@ public class FoodMoodDetailController implements Initializable {
     }
     
     /**
-     * Set values of text labels
-     * @param foodMoodID
-     * @param userId
+     * Set values of text labels for FoodMoodDetail scene
+     * @param foodMoodID 
      * @param foodName
      * @param foodMoodDescription
      * @param foodMoodDate
@@ -67,15 +66,19 @@ public class FoodMoodDetailController implements Initializable {
     }
     
     /**
-     * Resets the food mood detail user interface 
+     * Clears the food mood text labels and text areas of FoodMoodDetail scene
      */
-    public void reset() {
-        System.out.println("Resetting Window");
+    public void clearFields() {
+        foodMoodDetail_foodMoodDescription.setText("");
+        foodMoodDetail_foodName.setText("");
+        foodMoodDetail_foodMoodID.setText("");
+        foodMoodDetail_foodMoodDate.setText("");
+        foodMoodDetail_isFavorite.setText("");
     }
     
     /**
      * Closes Food Mood Detail Scene
-     * @param event 
+     * @param event foodMoodDetail_goToMain button action
      */
     @FXML
     private void goToMainMenu(ActionEvent event) {
@@ -84,6 +87,4 @@ public class FoodMoodDetailController implements Initializable {
         temp.close();
     }
 
-    
-  
 }

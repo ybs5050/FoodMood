@@ -7,6 +7,7 @@ package userdata;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ResourceBundle;
@@ -65,6 +66,12 @@ public class FoodMoodController implements Initializable {
     private DatePicker foodMood_endDatePicker;
     @FXML
     private Button foodMood_filter;
+    @FXML
+    private Button foodMood_showOnlyFavorites;
+    @FXML
+    private Button foodMood_addToFavorites;
+    @FXML
+    private Button foodMood_removeFromFavorites;
     /**
      * Initializes the controller class
      */
@@ -107,7 +114,7 @@ public class FoodMoodController implements Initializable {
      * Creates and returns a food foodMood object
      * @param foodName
      * @param description
-     * @param date
+     * @param Date
      * @return A FoodMood object
      */
     public FoodMood addFoodMood(String foodName, String description, String Date) {
@@ -147,7 +154,7 @@ public class FoodMoodController implements Initializable {
     
     /**
      * Shows AddFoodMood Scene
-     * @param event 
+     * @param event foodMood_addFoodMood button action
      */
     @FXML
     private void addFoodMood(ActionEvent event) throws IOException {
@@ -158,6 +165,7 @@ public class FoodMoodController implements Initializable {
         base.setTitle("FoodMood - Add Food Mood");
         Scene main = new Scene(root);
         base.setScene(main);
+        base.setResizable(false);
         base.show();
         // Detect Add Food Mood scene is closing and refresh table
         // Decorator Implementation
@@ -175,11 +183,12 @@ public class FoodMoodController implements Initializable {
     
     /**
      * Deletes a selected foodMood
-     * @param event 
+     * @param event foodMood_deleteFoodMood button action
      */
     @FXML
     private void deleteFoodMood(ActionEvent event) throws ParseException {
         if(foodMood_foodMoodListTable.getSelectionModel().isEmpty()) {
+            // Send error message if no row is selected
             foodMood_deleteFoodMood.setDisable(true);
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error");
@@ -189,6 +198,7 @@ public class FoodMoodController implements Initializable {
             foodMood_foodMoodListTable.requestFocus();
             foodMood_deleteFoodMood.setDisable(false);
         } else {
+            // Get selected row object, and get delete confirmation from the user
             FoodMood selectedFoodMood = foodMood_foodMoodListTable.getSelectionModel().getSelectedItem();
             int foodMoodID = foodMood_foodMoodListTable.getSelectionModel().getSelectedItem().getFoodMoodID();
             // Ask for confirmation
@@ -201,9 +211,10 @@ public class FoodMoodController implements Initializable {
             alert.getButtonTypes().setAll(yes, no);
             Optional<ButtonType> result = alert.showAndWait();
             if(result.get() == yes) {
+                // Delete selected row
                 boolean deleteResult = database.Database.DatabaseHandler.deleteFoodMood(foodMoodID);
                 alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Error");
+                alert.setTitle("Success");
                 alert.setHeaderText("Delete Success");
                 alert.setContentText("Food Mood Deleted");
                 alert.showAndWait();
@@ -221,7 +232,7 @@ public class FoodMoodController implements Initializable {
     
     /**
      * Go back to main menu
-     * @param event 
+     * @param event foodMood_goToMain button action
      */
     @FXML
     private void goToMainMenu(ActionEvent event) {
@@ -232,11 +243,12 @@ public class FoodMoodController implements Initializable {
 
     /**
      * Show details of selected row
-     * @param event 
+     * @param event foodMood_viewDetails button action
      */
     @FXML
     private void viewFoodMoodDetails(ActionEvent event) throws IOException {
         if(foodMood_foodMoodListTable.getSelectionModel().isEmpty()) {
+            // No row selected, send error alert
             foodMood_deleteFoodMood.setDisable(true);
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error");
@@ -256,10 +268,16 @@ public class FoodMoodController implements Initializable {
             FoodMoodDetailController controller = loader.<FoodMoodDetailController>getController();
             controller.setValues(temp.getFoodMoodID(), temp.getFoodName(), temp.getFoodMoodDescription(), temp.getFoodMoodDate(), temp.getIsFavoriteBoolean());
             base.setScene(main);
+            base.setResizable(false);
             base.show();
         }
     }
     
+    /**
+     * Search item in the foodMood_foodMoodListTable and return it if found
+     * @param st
+     * @return FoodMood
+     */
     private FoodMood findSearchTerm(String st){
         Iterator<FoodMood> foodMoodSearch = foodMoodList.iterator();
         while(foodMoodSearch.hasNext()){
@@ -279,7 +297,7 @@ public class FoodMoodController implements Initializable {
     private ArrayList<FoodMood> filterByDate(Date start, Date end) throws ParseException{
         ArrayList<FoodMood> filteredList = new ArrayList<>();
         // Get all foodmood from db incase the list is emtpy
-        Iterator<FoodMood> foodMoodSearch = getFoodMoodList().iterator();
+        Iterator<FoodMood> foodMoodSearch = foodMoodList.iterator();
         while(foodMoodSearch.hasNext()){
             FoodMood currentItem = foodMoodSearch.next();
             Date currentItemDate = new SimpleDateFormat("MM/dd/yyyy").parse(currentItem.getFoodMoodDate());
@@ -293,13 +311,13 @@ public class FoodMoodController implements Initializable {
     
     /**
      * Filter FoodMood objects that was added in a given date range
-     * @param event 
+     * @param event foodMood_filter button action
      */
     @FXML
     private void filterFoodMood(ActionEvent event) throws ParseException {
         // Check if dates are picked
         if(foodMood_startDatePicker.getValue() == null || foodMood_endDatePicker.getValue() == null) {
-            // Send error message
+            // Send error message if either date picker is empty
             foodMood_filter.setDisable(true);
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error");
@@ -318,7 +336,7 @@ public class FoodMoodController implements Initializable {
                     + "/" + Integer.toString(foodMood_endDatePicker.getValue().getDayOfMonth())
                     + "/" + Integer.toString(foodMood_endDatePicker.getValue().getYear()));
             if(start.after(end)) {
-                // Start date is after end date
+                // Start date is after end date, send error message
                 foodMood_filter.setDisable(true);
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Error");
@@ -331,12 +349,136 @@ public class FoodMoodController implements Initializable {
                 }
             } else {
                 // filter FoodMood
-                foodMoodList = filterByDate(start, end);
-                // populate the table if not empty
+                ArrayList<FoodMood> filteredList = filterByDate(start, end);
+                // fill the foodMood_foodMoodListTable with filtered list
                 ObservableList<FoodMood> data;
-                data = FXCollections.observableArrayList(foodMoodList);
+                data = FXCollections.observableArrayList(filteredList);
                 foodMood_foodMoodListTable.setItems(data);
                 }
             }
         }
+    
+    /**
+     * Get all food mood objects that are tagged as favorites and show all food mood if pressed again
+     * @param event foodMood_showOnlyFavorites button action
+     * @throws ParseException 
+     */
+    @FXML
+    private void filterFavorites(ActionEvent event) throws ParseException {
+        // Show only favorite food mood
+        if(foodMood_showOnlyFavorites.getText().equals("Show Only Favorites")) {
+            ArrayList<FoodMood> filteredList = new ArrayList<>();
+            Iterator<FoodMood> foodMoodSearch = foodMoodList.iterator();
+            while(foodMoodSearch.hasNext()){
+                FoodMood currentItem = foodMoodSearch.next();
+                if(currentItem.getIsFavoriteBoolean()) {
+                    filteredList.add(currentItem);
+                }
+            }
+            // Add to table view
+            ObservableList<FoodMood> data;
+            data = FXCollections.observableArrayList(filteredList);
+            foodMood_foodMoodListTable.setItems(data);
+            foodMood_showOnlyFavorites.setText("Show All Food Mood");
+        } else {
+            // Show all food mood
+            initializeFoodMoodTable();
+            foodMood_showOnlyFavorites.setText("Show Only Favorites");
+        }
     }
+    
+    /**
+     * Add selected row FoodMood object to favorites
+     * @param event foodMood_showOnlyFavorites button action
+     */
+    @FXML
+    private void addToFavorites(ActionEvent event) throws SQLException, ParseException {
+        if(foodMood_foodMoodListTable.getSelectionModel().isEmpty()) {
+            // No row selected, send error alert
+            foodMood_showOnlyFavorites.setDisable(true);
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("Please select a row to view details and try again");
+            alert.setContentText("Please select a row to view details and try again");
+            alert.showAndWait();
+            foodMood_foodMoodListTable.requestFocus();
+            foodMood_showOnlyFavorites.setDisable(false);
+        } else {
+            if(foodMood_foodMoodListTable.getSelectionModel().getSelectedItem().getIsFavoriteBoolean()) {
+                // Already in favorites
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Error");
+                alert.setHeaderText("Already in Favorites");
+                alert.setContentText("This FoodMood is already in Favorites");
+                alert.showAndWait();
+                return;
+            }
+            // Update database
+            int foodMoodID = foodMood_foodMoodListTable.getSelectionModel().getSelectedItem().getFoodMoodID();
+            boolean results = database.Database.DatabaseHandler.setFavorites(true, foodMoodID);
+            if (results) {
+                // Update successful
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Success");
+                alert.setHeaderText("Food Mood Update Success");
+                alert.setContentText("Food Mood Added to Favorites");
+                alert.showAndWait();
+                initializeFoodMoodTable();
+            } else {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Error");
+                alert.setHeaderText("Update Failed");
+                alert.setContentText("Update Failed. Please try again");
+                alert.showAndWait();
+            }
+        }
+    }
+    
+    /**
+     * Remove selected row FoodMood object from favorites
+     * @param event Remove From Favorites button action
+     */
+    @FXML
+    private void removeFromFavorites(ActionEvent event) throws SQLException, ParseException {
+        if(foodMood_foodMoodListTable.getSelectionModel().isEmpty()) {
+            // No row selected, send error alert
+            foodMood_showOnlyFavorites.setDisable(true);
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("Please select a row to view details and try again");
+            alert.setContentText("Please select a row to view details and try again");
+            alert.showAndWait();
+            foodMood_foodMoodListTable.requestFocus();
+            foodMood_showOnlyFavorites.setDisable(false);
+        } else {
+            if(!foodMood_foodMoodListTable.getSelectionModel().getSelectedItem().getIsFavoriteBoolean()) {
+                // Already not in favorites
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Error");
+                alert.setHeaderText("Not in Favorites");
+                alert.setContentText("This FoodMood is not in Favorites");
+                alert.showAndWait();
+                return;
+            }
+            // Update database
+            int foodMoodID = foodMood_foodMoodListTable.getSelectionModel().getSelectedItem().getFoodMoodID();
+            boolean results = database.Database.DatabaseHandler.setFavorites(false, foodMoodID);
+            if (results) {
+                // Update successful
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Success");
+                alert.setHeaderText("Food Mood Update Success");
+                alert.setContentText("Food Mood Removed from Favorites");
+                alert.showAndWait();
+                initializeFoodMoodTable();
+            } else {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Error");
+                alert.setHeaderText("Update Failed");
+                alert.setContentText("Update Failed. Please try again");
+                alert.showAndWait();
+            }
+        }
+    }
+    
+ }

@@ -36,6 +36,7 @@ public class Database {
      * Static class for database CRUD operations
      */
     public static class DatabaseHandler {
+
         /**
          * This is the default constructor for the DatabaseHandler class
          * @throws java.lang.ClassNotFoundException
@@ -305,6 +306,28 @@ public class Database {
             try {
                 stmt = (Statement) conn.createStatement();
                 System.out.println(regStatement);
+                stmt.execute(regStatement);
+                stmt.close();
+                return true;
+            } catch (SQLException except) {
+                System.out.println("Error occured: " + except.toString());
+                return false;
+            }
+        }
+        
+        /**
+         * Attempt to update food mood to have 'ISFAVORITE' column to 'true'
+         * @param favorite
+         * @param foodMoodID
+         * @return true = success, false = failure
+         * @throws java.sql.SQLException
+         */
+        public static boolean setFavorites(boolean favorite, int foodMoodID) throws SQLException {
+            stmt = conn.createStatement();
+            String regStatement = "UPDATE " + "APP.\"foodmood\" " +
+                    "SET ISFAVORITE = " + favorite + " WHERE ID = " + foodMoodID;
+            System.out.println(regStatement);
+            try {
                 stmt.execute(regStatement);
                 stmt.close();
                 return true;

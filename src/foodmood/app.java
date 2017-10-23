@@ -19,7 +19,7 @@ import javafx.stage.WindowEvent;
 
 /**
  *
- * @author 
+ * @author Youngmin
  */
 public class app extends Application {
 
@@ -41,6 +41,7 @@ public class app extends Application {
         base.setTitle("FoodMood - Login");
         login = new Scene(root);
         base.setScene(getLogin());
+        base.setResizable(false);
         base.show();
         // Decorator Implementation
         base.setOnCloseRequest(new EventHandler<WindowEvent>() {

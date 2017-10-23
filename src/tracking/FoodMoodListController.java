@@ -103,10 +103,15 @@ public class FoodMoodListController implements Initializable {
   public void printList(ArrayList foodMoodArray) {
       System.out.println("FoodMoodList Contains These Objects: " + foodMoodArray);
   }  
-
+  
+  /**
+   * Add Food mood to the database
+   * @param event addFoodMood_addFoodMood button action
+   */
   @FXML
   private void handleAddFoodMood(javafx.event.ActionEvent event) {
       if(isNull()) {
+          // 1 or more entries are illegal
           addFoodMood_addFoodMood.setDisable(true);
           Alert alert = new Alert(Alert.AlertType.ERROR);
           alert.setTitle("Error");
@@ -121,6 +126,7 @@ public class FoodMoodListController implements Initializable {
           String foodMoodDescription = addFoodMood_foodMoodDescription.getText();
           String month = Integer.toString(addFoodMood_datePicker.getValue().getMonthValue());
           String days = Integer.toString(addFoodMood_datePicker.getValue().getDayOfMonth());
+          // If month and days is sigle digit (less than 10), add '0' infront to keep lexographical order
           if(month.length() < 2) {
               month = "0" + month;
           }
@@ -130,6 +136,7 @@ public class FoodMoodListController implements Initializable {
           String foodMoodDate = month + "/" +days + "/" + 
                   Integer.toString(addFoodMood_datePicker.getValue().getYear());
           boolean isFavorite = addFoodMood_isFavorite.isSelected();
+          // Get add to databaser result
           boolean result = database.Database.DatabaseHandler.addFoodMood(foodName, foodMoodDescription, foodMoodDate,
                   isFavorite);
           if(result) {

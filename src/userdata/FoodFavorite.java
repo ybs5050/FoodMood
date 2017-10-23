@@ -28,20 +28,20 @@ public class FoodFavorite implements Initializable {
     }  
     
     public void addFavoriteFood(String favFood){
-      foodList.add(favFood);
-      System.out.println("Add Food Type successful");
+        foodList.add(favFood);
+        System.out.println("Add Food Type successful");
     }
     
     /**
     * @return the foodList
     */
     public ArrayList<String> getFoodList() {
-      System.out.println("Get Favorite Food List successful");
-      return foodList;
+        System.out.println("Get Favorite Food List successful");
+        return foodList;
     }
 
-  public void removeFavoriteFood(int index) {
-    foodList.remove(index);
-    System.out.println("Remove Food Type successful");
-  }
+    public void removeFavoriteFood(int index) {
+      foodList.remove(index);
+      System.out.println("Remove Food Type successful");
+    }
 }

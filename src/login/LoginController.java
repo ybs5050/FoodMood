@@ -70,7 +70,6 @@ public class LoginController implements Initializable{
             showMainMenu();
         } 
         
-        // Close login stage and show main menu stage
       } else {
         // Send error message and clear the username and password text field
         Alert alert = new Alert(AlertType.ERROR);
@@ -119,8 +118,6 @@ public class LoginController implements Initializable{
         }
     }
     
-    
-    
     /**
      * Validates username and password
      * @param username
@@ -138,7 +135,7 @@ public class LoginController implements Initializable{
     
     /**
      * Authenticate the user and show main menu UI
-     * @param event
+     * @param event login_loginButton button action
      * @throws IOException 
      */
     @FXML
@@ -165,7 +162,7 @@ public class LoginController implements Initializable{
     
     /**
      * Register a new account
-     * @param event 
+     * @param event login_registerButton button action
      */
     @FXML
     private void handleRegister(ActionEvent event) {
@@ -201,6 +198,7 @@ public class LoginController implements Initializable{
             base.setTitle("FoodMood - Main Menu");
             Scene main = new Scene(root);
             base.setScene(main);
+            base.setResizable(false);
             base.show();
         } catch (IOException except) {
             System.out.println("Error occured: " + except.toString());
@@ -209,7 +207,7 @@ public class LoginController implements Initializable{
     
     /**
      * Shuts down the program
-     * @param event 
+     * @param event login_exitButton button action
      */
     @FXML
     private void exitProgram(ActionEvent event) {
@@ -217,7 +215,7 @@ public class LoginController implements Initializable{
     }
     
     /**
-     * Clears the two textfields 
+     * Clears username and password text fields
      */
     private void clearFields() {
         login_username.setText("");

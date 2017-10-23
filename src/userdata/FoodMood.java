@@ -101,11 +101,7 @@ public class FoodMood {
      * @return 
      */
     boolean getIsFavoriteBoolean() {
-        if (isFavorite) {
-            return true;
-        } else {
-            return false;
-        }
+        return isFavorite;
     }
     
 }

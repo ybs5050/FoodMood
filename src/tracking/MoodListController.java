@@ -69,8 +69,7 @@ public class MoodListController implements Initializable {
     private void addMood(String moodName, String moodDescription, String moodSeverity, String moodTimeOccured) {
         boolean result = database.Database.DatabaseHandler.createMood(moodName, moodDescription, moodSeverity, moodTimeOccured);
         if (result) {
-            // Success
-            // Send Confirmation Message
+            // If success send Confirmation Message
             // Used examples from http://code.makery.ch/blog/javafx-dialogs-official/
             Alert alert = new Alert(AlertType.INFORMATION);
             alert.setTitle("Add Mood Success");

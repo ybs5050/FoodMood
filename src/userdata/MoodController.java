@@ -61,14 +61,14 @@ public class MoodController implements Initializable {
         // Restrcit table to only single selection mode
         mood_moodListTable.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
         moodCol.setCellValueFactory(
-                new PropertyValueFactory<Mood, String>("moodNameT")
+                new PropertyValueFactory<Mood, String>("moodName")
         );
         severityCol.setCellValueFactory(
-                new PropertyValueFactory<Mood, String>("moodSeverityT")
+                new PropertyValueFactory<Mood, String>("moodSeverity")
         );
         /*
         idCol.setCellValueFactory(
-                new PropertyValueFactory<Mood, Integer>("moodIdT")
+                new PropertyValueFactory<Mood, Integer>("moodId")
         );
         */
         mood_moodListTable.getColumns().setAll(moodCol, severityCol);
@@ -100,7 +100,7 @@ public class MoodController implements Initializable {
     
     /**
      * Shows AddMood Scene
-     * @param event 
+     * @param event mood_addMood button action
      */
     @FXML
     private void addMood(ActionEvent event) {
@@ -112,6 +112,7 @@ public class MoodController implements Initializable {
             base.setTitle("FoodMood - Add Mood");
             Scene main = new Scene(root);
             base.setScene(main);
+            base.setResizable(false);
             base.show();
             // Detect addmood scene is closing and refresh table
             // Decorator Implementation
@@ -128,7 +129,7 @@ public class MoodController implements Initializable {
     
     /**
      * Deletes a selected mood
-     * @param event 
+     * @param event mood_addDelete button action
      */
     @FXML
     private void deleteMood(ActionEvent event) {
@@ -185,7 +186,7 @@ public class MoodController implements Initializable {
     
     /**
      * Go back to main menu
-     * @param event 
+     * @param event mood_goToMain button action
      */
     @FXML
     private void goToMainMenu(ActionEvent event) {
@@ -196,7 +197,7 @@ public class MoodController implements Initializable {
 
     /**
      * Show details of selected row
-     * @param event 
+     * @param event mood_viewDetails button action
      */
     @FXML
     private void viewMoodDetails(ActionEvent event) {
