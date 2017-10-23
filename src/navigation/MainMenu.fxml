@@ -16,5 +16,6 @@
       </Text>
       <Text fx:id="mainmenu_userid" layoutX="14.0" layoutY="62.0" strokeType="OUTSIDE" strokeWidth="0.0" text="User ID PLACEHOLDER" />
       <Button fx:id="mainmenu_viewMoods" layoutX="14.0" layoutY="89.0" mnemonicParsing="false" onAction="#viewMoodList" prefHeight="23.0" prefWidth="102.0" text="View Moods" />
+      <Button fx:id="mainmenu_foodMoodList" layoutX="14.0" layoutY="125.0" mnemonicParsing="false" onAction="#viewFoodMoodList" prefHeight="55.0" prefWidth="102.0" text="View Past&#10;Food/Mood" />
    </children>
 </AnchorPane>
