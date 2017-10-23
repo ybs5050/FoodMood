@@ -5,7 +5,10 @@
  */
 package userdata;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.text.ParseException;
@@ -13,6 +16,7 @@ import java.text.SimpleDateFormat;
 import java.util.ResourceBundle;
 import javafx.fxml.Initializable;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -72,6 +76,8 @@ public class FoodMoodController implements Initializable {
     private Button foodMood_addToFavorites;
     @FXML
     private Button foodMood_removeFromFavorites;
+    @FXML
+    private Button foodMood_generateReport;
     /**
      * Initializes the controller class
      */
@@ -479,6 +485,36 @@ public class FoodMoodController implements Initializable {
                 alert.showAndWait();
             }
         }
+    }
+    
+    /**
+     * Generate a .doc file report of FoodMood
+     * @param event foodMood_generateReport button action
+     */
+    @FXML
+    private void generateReport(ActionEvent event) throws FileNotFoundException, UnsupportedEncodingException {
+        if(foodMoodList.isEmpty()) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("No FoodMood");
+            alert.setContentText("No FoodMood Exists, Cannot generate report");
+            alert.showAndWait();
+        } else {
+            String fileName = "FoodMoodReport " + 
+                new SimpleDateFormat("yyyyMMdd_HHmmss").format(Calendar.getInstance().getTime());
+            PrintWriter writer = new PrintWriter("reports/" + fileName + ".doc", "UTF-8");
+            writer.println("Report Generated On " + Calendar.getInstance().getTime());
+            writer.println("Username: " + database.Database.username);
+            writer.println("User ID: " + database.Database.userId);
+            ArrayList<String> content = new ArrayList<>();
+            int index = 1;
+            for(FoodMood temp : foodMoodList) {
+                writer.println("FoodMood #" + Integer.toString(index) + ".--------------------" );
+                writer.println(temp.getFoodMoodSummary());
+                index += 1;
+            }
+            writer.close();
+        } 
     }
     
  }

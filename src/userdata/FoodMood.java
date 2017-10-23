@@ -101,7 +101,21 @@ public class FoodMood {
      * @return 
      */
     boolean getIsFavoriteBoolean() {
-        return isFavorite;
+        return this.isFavorite;
+    }
+    
+    /**
+     * Returns the object's summary
+     * @return string
+     */
+    public String getFoodMoodSummary() {
+        String summary = "";
+        summary += "Food Name: " + this.foodName + "\n";
+        summary += "Food Mood Description: " + this.foodMoodDescription + "\n";
+        summary += "Food Mood Date: " + this.foodMoodDate + "\n";
+        summary += "Food Mood Favorite: " + this.isFavorite + "\n";
+        summary += "Food Mood ID: " + this.foodMoodID + "\n";
+        return summary;
     }
     
 }
