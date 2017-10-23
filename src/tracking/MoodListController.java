@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package moodUI;
+package tracking;
 
 import java.net.URL;
 import java.text.ParseException;
@@ -11,7 +11,6 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Optional;
 import java.util.ResourceBundle;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -20,18 +19,15 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
-import javafx.scene.control.MenuItem;
-import javafx.scene.control.SplitMenuButton;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import javafx.stage.Window;
 
 /**
  * FXML Controller Class
  * @author Youngmin
  */
-public class AddMoodController implements Initializable {
+public class MoodListController implements Initializable {
 
     @FXML
     private TextField addMood_moodName;
@@ -84,6 +80,8 @@ public class AddMoodController implements Initializable {
             if (resultAlert.get() == ButtonType.OK) {
                 // Close Add Mood Scene
                 //temp.close();
+                addMood_addMood.setDisable(false);
+                clearFields();
             } 
         } else {
             // Send error message and clear the username and password text field
@@ -167,7 +165,7 @@ public class AddMoodController implements Initializable {
     }
     
     /**
-     * Clears the user entries
+     * Clears user entries
      */
     private void clearFields() {
         addMood_moodName.setText("");

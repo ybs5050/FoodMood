@@ -10,7 +10,7 @@
    <children>
       <Button fx:id="mood_viewDetails" layoutX="19.0" layoutY="457.0" mnemonicParsing="false" onAction="#viewMoodDetails" prefHeight="23.0" prefWidth="375.0" text="View Mood Details" />
       <Button fx:id="mood_addMood" layoutX="19.0" layoutY="430.0" mnemonicParsing="false" onAction="#addMood" prefHeight="23.0" prefWidth="181.0" text="Add Mood" />
-      <Button fx:id="mood_deleteMood" layoutX="210.0" layoutY="430.0" mnemonicParsing="false" onAction="#deleteMood" prefHeight="23.0" prefWidth="181.0" text="Delete Mood" />
+      <Button fx:id="mood_deleteMood" layoutX="213.0" layoutY="430.0" mnemonicParsing="false" onAction="#deleteMood" prefHeight="23.0" prefWidth="181.0" text="Delete Mood" />
       <Button fx:id="mood_goToMain" layoutX="19.0" layoutY="483.0" mnemonicParsing="false" onAction="#goToMainMenu" prefHeight="23.0" prefWidth="375.0" text="Go back to Main Menu" />
       <TableView fx:id="mood_moodListTable" prefHeight="424.0" prefWidth="405.0">
         <columns>
