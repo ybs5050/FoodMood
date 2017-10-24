@@ -8,8 +8,6 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import database.Database;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.event.EventHandler;
 import javafx.stage.WindowEvent;
 
@@ -21,7 +19,7 @@ import javafx.stage.WindowEvent;
 
 /**
  *
- * @author 
+ * @author Youngmin
  */
 public class app extends Application {
 
@@ -43,6 +41,7 @@ public class app extends Application {
         base.setTitle("FoodMood - Login");
         login = new Scene(root);
         base.setScene(getLogin());
+        base.setResizable(false);
         base.show();
         // Decorator Implementation
         base.setOnCloseRequest(new EventHandler<WindowEvent>() {

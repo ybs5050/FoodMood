@@ -61,14 +61,14 @@ public class MoodController implements Initializable {
         // Restrcit table to only single selection mode
         mood_moodListTable.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
         moodCol.setCellValueFactory(
-                new PropertyValueFactory<Mood, String>("moodNameT")
+                new PropertyValueFactory<Mood, String>("moodName")
         );
         severityCol.setCellValueFactory(
-                new PropertyValueFactory<Mood, String>("moodSeverityT")
+                new PropertyValueFactory<Mood, String>("moodSeverity")
         );
         /*
         idCol.setCellValueFactory(
-                new PropertyValueFactory<Mood, Integer>("moodIdT")
+                new PropertyValueFactory<Mood, Integer>("moodId")
         );
         */
         mood_moodListTable.getColumns().setAll(moodCol, severityCol);
@@ -81,8 +81,7 @@ public class MoodController implements Initializable {
      * @return the moodList
      */
     public ArrayList<Mood> getMoodList() {
-        System.out.println("Get Mood List Action performed.");
-        return moodList;
+        return database.Database.DatabaseHandler.getMoodList();
     }
     
     /**
@@ -90,9 +89,9 @@ public class MoodController implements Initializable {
      */
     private void initializeMoodTable() {
         this.moodList.clear();
-        this.moodList = database.Database.DatabaseHandler.getMoodList();
+        this.moodList = getMoodList();
         ObservableList<Mood> data;
-        // populate the able if not empty
+        // populate the table if not empty
         if(!moodList.isEmpty()) {
             data = FXCollections.observableArrayList(moodList);
             mood_moodListTable.setItems(data);
@@ -101,18 +100,19 @@ public class MoodController implements Initializable {
     
     /**
      * Shows AddMood Scene
-     * @param event 
+     * @param event mood_addMood button action
      */
     @FXML
     private void addMood(ActionEvent event) {
         try {
             // Loads FXML resources and create,display a FXML scene 
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/moodUI/AddMood.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/tracking/MoodList.fxml"));
             Parent root = loader.load();
             Stage base = new Stage();
             base.setTitle("FoodMood - Add Mood");
             Scene main = new Scene(root);
             base.setScene(main);
+            base.setResizable(false);
             base.show();
             // Detect addmood scene is closing and refresh table
             // Decorator Implementation
@@ -129,7 +129,7 @@ public class MoodController implements Initializable {
     
     /**
      * Deletes a selected mood
-     * @param event 
+     * @param event mood_addDelete button action
      */
     @FXML
     private void deleteMood(ActionEvent event) {
@@ -166,25 +166,8 @@ public class MoodController implements Initializable {
                     alert.setHeaderText(null);
                     alert.setContentText("Mood Deleted");
                     alert.showAndWait();
-                    // Reopen mood window
-                    
-                    // Close current stage
-                    Stage tempWindow = (Stage) mood_addMood.getScene().getWindow();
-                    tempWindow.close();
-                    System.out.println("View Food Mood List event occured");
-                    try {
-                        // Loads FXML resources and create,display a FXML scene 
-                        FXMLLoader loader = new FXMLLoader(getClass().getResource("/userdata/Mood.fxml"));
-                        Parent root = loader.load();
-                        Stage base = new Stage();
-                        base.setTitle("FoodMood - Mood List");
-                        Scene main = new Scene(root);
-                        base.setScene(main);
-                        base.show();
-                    } catch (IOException except) {
-                        System.out.println("Error occured: " + except.toString());
-                    }
-                    
+                    // Refresh mood list
+                    initializeMoodTable();
                 } else {
                     // Send error message if failed
                     alert = new Alert(AlertType.ERROR);
@@ -203,7 +186,7 @@ public class MoodController implements Initializable {
     
     /**
      * Go back to main menu
-     * @param event 
+     * @param event mood_goToMain button action
      */
     @FXML
     private void goToMainMenu(ActionEvent event) {
@@ -214,7 +197,7 @@ public class MoodController implements Initializable {
 
     /**
      * Show details of selected row
-     * @param event 
+     * @param event mood_viewDetails button action
      */
     @FXML
     private void viewMoodDetails(ActionEvent event) {

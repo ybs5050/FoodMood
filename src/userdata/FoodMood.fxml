@@ -6,18 +6,18 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="userdata.FoodMoodController">
+<AnchorPane id="AnchorPane" prefHeight="521.0" prefWidth="567.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="userdata.FoodMoodController">
     <children>
-      <Button fx:id="foodMood_viewDetails" layoutX="19.0" layoutY="457.0" mnemonicParsing="false" onAction="#viewFoodMoodDetails" prefHeight="23.0" prefWidth="375.0" text="View Food/Mood Details" />
+      <Button fx:id="foodMood_viewDetails" layoutX="19.0" layoutY="458.0" mnemonicParsing="false" onAction="#viewFoodMoodDetails" prefHeight="23.0" prefWidth="375.0" text="View Food/Mood Details" />
       <Button fx:id="foodMood_addFoodMood" layoutX="19.0" layoutY="430.0" mnemonicParsing="false" onAction="#addFoodMood" prefHeight="23.0" prefWidth="181.0" text="Add Food/Mood" />
-      <Button fx:id="foodMood_deleteFoodMood" layoutX="210.0" layoutY="430.0" mnemonicParsing="false" onAction="#deleteFoodMood" prefHeight="23.0" prefWidth="181.0" text="Delete Food/Mood" />
-      <Button fx:id="foodMood_goToMain" layoutX="19.0" layoutY="483.0" mnemonicParsing="false" onAction="#goToMainMenu" prefHeight="23.0" prefWidth="375.0" text="Go back to Main Menu" />
+      <Button fx:id="foodMood_deleteFoodMood" layoutX="213.0" layoutY="430.0" mnemonicParsing="false" onAction="#deleteFoodMood" prefHeight="23.0" prefWidth="181.0" text="Delete Food/Mood" />
+      <Button fx:id="foodMood_goToMain" layoutX="19.0" layoutY="486.0" mnemonicParsing="false" onAction="#goToMainMenu" prefHeight="23.0" prefWidth="375.0" text="Go back to Main Menu" />
       <Label fx:id="foodMood_searchDateLabel" layoutX="425" layoutY="10" text="Filter by Date Range" />
       <Label fx:id="foodMood_startDate" layoutX="410" layoutY="35" text="Start Date" />
-      <DatePicker fx:id="foodMood_startDatePicker" layoutX="410" layoutY="55" prefWidth="150"/>
+      <DatePicker fx:id="foodMood_startDatePicker" layoutX="410" layoutY="55" prefWidth="150" />
       <Label fx:id="foodMood_endDate" layoutX="410" layoutY="100" text="End Date" />
-      <DatePicker fx:id="foodMood_endDatePicker" layoutX="410" layoutY="120" prefWidth="150"/>
-      <Button fx:id="foodMood_filter" layoutX="410" layoutY="160" text="Filter"/>
+      <DatePicker fx:id="foodMood_endDatePicker" layoutX="410" layoutY="120" prefWidth="150" />
+      <Button fx:id="foodMood_filter" layoutX="410.0" layoutY="160.0" onAction="#filterFoodMood" prefHeight="25.0" prefWidth="150.0" text="Filter" />
       <TableView fx:id="foodMood_foodMoodListTable" prefHeight="424.0" prefWidth="405.0">
         <columns>
           <TableColumn editable="false" prefWidth="75.0" sortable="true" text="C1" />
@@ -28,5 +28,9 @@
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
          </columnResizePolicy>
       </TableView>
+      <Button fx:id="foodMood_showOnlyFavorites" layoutX="410.0" layoutY="248.0" mnemonicParsing="false" onAction="#filterFavorites" prefHeight="25.0" prefWidth="150.0" text="Show Only Favorites" />
+      <Button fx:id="foodMood_addToFavorites" layoutX="410.0" layoutY="189.0" mnemonicParsing="false" onAction="#addToFavorites" prefHeight="25.0" prefWidth="150.0" text="Add To Favorites" />
+      <Button fx:id="foodMood_removeFromFavorites" layoutX="410.0" layoutY="219.0" mnemonicParsing="false" onAction="#removeFromFavorites" prefHeight="25.0" prefWidth="150.0" text="Remove From Favorites" />
+      <Button fx:id="foodMood_generateReport" layoutX="410.0" layoutY="278.0" mnemonicParsing="false" onAction="#generateReport" prefHeight="25.0" prefWidth="150.0" text="Generate Report" />
    </children>
 </AnchorPane>

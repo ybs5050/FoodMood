@@ -1,12 +1,9 @@
 package navigation;
 
 
-import java.awt.event.ActionEvent;
 import java.io.IOException;
 import java.net.URL;
-import java.sql.SQLException;
 import java.util.ResourceBundle;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -15,7 +12,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import javafx.stage.WindowEvent;
  
 
 /*
@@ -48,14 +44,10 @@ public class MainMenuController implements Initializable {
             mainmenu_username.setText("Welcome, " + database.Database.username);
             mainmenu_userid.setText("User ID: " + database.Database.userId);
         }
-        /*
-        //TEST CODE for application flow
-        viewFoodMoodList();
-        */
     }
     
     /**
-     * Opens a new scene from FoodMoodList class
+     * Opens a new scene to view mood list
      * @param event "View Mood Food" button action
      */
     @FXML
@@ -69,12 +61,17 @@ public class MainMenuController implements Initializable {
             base.setTitle("FoodMood - Mood List");
             Scene main = new Scene(root);
             base.setScene(main);
+            base.setResizable(false);
             base.show();
         } catch (IOException except) {
             System.out.println("Error occured: " + except.toString());
         }
     }
     
+    /**
+     * Opens a new scene to view food mood list
+     * @param event "View Food/Mood" button action
+     */
     @FXML
     private void viewFoodMoodList(javafx.event.ActionEvent event) {
         System.out.println("View Food Mood List event occured");
@@ -86,6 +83,7 @@ public class MainMenuController implements Initializable {
             base.setTitle("FoodMood - Food/Mood List");
             Scene main = new Scene(root);
             base.setScene(main);
+            base.setResizable(false);
             base.show();
         } catch (IOException except) {
             System.out.println("Error occured: " + except.toString());
