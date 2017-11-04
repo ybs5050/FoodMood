@@ -1,26 +1,25 @@
-Mon Oct 23 15:35:18 EDT 2017 : Apache Derby Network Server - 10.11.1.2 - (1629631) started and ready to accept connections on port 1527
+Sat Nov 04 13:51:11 EDT 2017 : Apache Derby Network Server - 10.11.1.2 - (1629631) started and ready to accept connections on port 1527
 ----------------------------------------------------------------
-Mon Oct 23 15:35:21 EDT 2017:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.11.1.2 - (1629631): instance a816c00e-015f-4abb-6df5-ffffb3cfbe20 
+Sat Nov 04 13:51:11 EDT 2017:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.11.1.2 - (1629631): instance a816c00e-015f-8828-6cf3-ffffb3cfbe20 
 on database directory C:\Users\Asus\Documents\GitHub\FoodMood\database\foodmood with class loader sun.misc.Launcher$AppClassLoader@1d44bcfa 
-Loaded from file:/C:/Program%20Files/Java/jdk1.8.0_101/db/lib/derby.jar
+Loaded from file:/C:/Program%20Files/Java/jdk1.8.0_144/db/lib/derby.jar
 java.vendor=Oracle Corporation
-java.runtime.version=1.8.0_101-b13
-user.dir=C:\Program Files\Java\jdk1.8.0_101\db
+java.runtime.version=1.8.0_144-b01
+user.dir=C:\Program Files\Java\jdk1.8.0_144\db
 os.name=Windows 10
 os.arch=amd64
 os.version=10.0
 derby.system.home=C:\Users\Asus\Documents\GitHub\FoodMood\database
 Database Class Loader started - derby.database.classpath=''
-Mon Oct 23 15:45:27 EDT 2017 Thread[DRDAConnThread_2,5,main] (XID = 4094), (SESSIONID = 2), (DATABASE = foodmood), (DRDAID = {2}), Cleanup action starting
-java.sql.SQLInvalidAuthorizationSpecException: 사용자 이름 '''이(가) 부적합합니다. 
+Sat Nov 04 13:51:41 EDT 2017 Thread[DRDAConnThread_3,5,main] Cleanup action starting
+java.sql.SQLException: Database 'savage_enigma' not found.
+	at org.apache.derby.impl.jdbc.SQLExceptionFactory.getSQLException(Unknown Source)
 	at org.apache.derby.impl.jdbc.SQLExceptionFactory.getSQLException(Unknown Source)
 	at org.apache.derby.impl.jdbc.Util.generateCsSQLException(Unknown Source)
-	at org.apache.derby.impl.jdbc.TransactionResourceImpl.wrapInSQLException(Unknown Source)
-	at org.apache.derby.impl.jdbc.TransactionResourceImpl.handleException(Unknown Source)
-	at org.apache.derby.impl.jdbc.EmbedConnection.handleException(Unknown Source)
-	at org.apache.derby.impl.jdbc.EmbedConnection.checkUserIsNotARole(Unknown Source)
-	at org.apache.derby.impl.jdbc.EmbedConnection.checkUserCredentials(Unknown Source)
+	at org.apache.derby.impl.jdbc.Util.generateCsSQLException(Unknown Source)
+	at org.apache.derby.impl.jdbc.EmbedConnection.newSQLException(Unknown Source)
+	at org.apache.derby.impl.jdbc.EmbedConnection.handleDBNotFound(Unknown Source)
 	at org.apache.derby.impl.jdbc.EmbedConnection.<init>(Unknown Source)
 	at org.apache.derby.jdbc.InternalDriver.getNewEmbedConnection(Unknown Source)
 	at org.apache.derby.jdbc.InternalDriver.connect(Unknown Source)
@@ -33,24 +32,20 @@ java.sql.SQLInvalidAuthorizationSpecException: 사용자 이름 '''이(가) 부적합합니�
 	at org.apache.derby.impl.drda.DRDAConnThread.parseDRDAConnection(Unknown Source)
 	at org.apache.derby.impl.drda.DRDAConnThread.processCommands(Unknown Source)
 	at org.apache.derby.impl.drda.DRDAConnThread.run(Unknown Source)
-Caused by: ERROR 28502: 사용자 이름 '''이(가) 부적합합니다. 
+Caused by: ERROR XJ004: Database 'savage_enigma' not found.
 	at org.apache.derby.iapi.error.StandardException.newException(Unknown Source)
-	at org.apache.derby.iapi.error.StandardException.newException(Unknown Source)
-	at org.apache.derby.iapi.util.IdUtil.getUserAuthorizationId(Unknown Source)
-	at org.apache.derby.impl.sql.conn.GenericLanguageConnectionContext.initialize(Unknown Source)
-	at org.apache.derby.impl.db.BasicDatabase.setupConnection(Unknown Source)
-	at org.apache.derby.impl.jdbc.TransactionResourceImpl.startTransaction(Unknown Source)
-	... 14 more
+	at org.apache.derby.impl.jdbc.SQLExceptionFactory.wrapArgsForTransportAcrossDRDA(Unknown Source)
+	... 18 more
 ============= begin nested exception, level (1) ===========
-ERROR 28502: 사용자 이름 '''이(가) 부적합합니다. 
+ERROR XJ004: Database 'savage_enigma' not found.
 	at org.apache.derby.iapi.error.StandardException.newException(Unknown Source)
-	at org.apache.derby.iapi.error.StandardException.newException(Unknown Source)
-	at org.apache.derby.iapi.util.IdUtil.getUserAuthorizationId(Unknown Source)
-	at org.apache.derby.impl.sql.conn.GenericLanguageConnectionContext.initialize(Unknown Source)
-	at org.apache.derby.impl.db.BasicDatabase.setupConnection(Unknown Source)
-	at org.apache.derby.impl.jdbc.TransactionResourceImpl.startTransaction(Unknown Source)
-	at org.apache.derby.impl.jdbc.EmbedConnection.checkUserIsNotARole(Unknown Source)
-	at org.apache.derby.impl.jdbc.EmbedConnection.checkUserCredentials(Unknown Source)
+	at org.apache.derby.impl.jdbc.SQLExceptionFactory.wrapArgsForTransportAcrossDRDA(Unknown Source)
+	at org.apache.derby.impl.jdbc.SQLExceptionFactory.getSQLException(Unknown Source)
+	at org.apache.derby.impl.jdbc.SQLExceptionFactory.getSQLException(Unknown Source)
+	at org.apache.derby.impl.jdbc.Util.generateCsSQLException(Unknown Source)
+	at org.apache.derby.impl.jdbc.Util.generateCsSQLException(Unknown Source)
+	at org.apache.derby.impl.jdbc.EmbedConnection.newSQLException(Unknown Source)
+	at org.apache.derby.impl.jdbc.EmbedConnection.handleDBNotFound(Unknown Source)
 	at org.apache.derby.impl.jdbc.EmbedConnection.<init>(Unknown Source)
 	at org.apache.derby.jdbc.InternalDriver.getNewEmbedConnection(Unknown Source)
 	at org.apache.derby.jdbc.InternalDriver.connect(Unknown Source)
@@ -65,10 +60,10 @@ ERROR 28502: 사용자 이름 '''이(가) 부적합합니다.
 	at org.apache.derby.impl.drda.DRDAConnThread.run(Unknown Source)
 ============= end nested exception, level (1) ===========
 Cleanup action completed
-Mon Oct 23 15:45:27 EDT 2017 Thread[DRDAConnThread_2,5,main] (DATABASE = foodmood), (DRDAID = {2}), 사용자 이름 '''이(가) 부적합합니다. 
+Sat Nov 04 13:51:41 EDT 2017 Thread[DRDAConnThread_3,5,main] (DATABASE = savage_enigma), (DRDAID = {2}), Database 'savage_enigma' not found.
 ----------------------------------------------------------------
-Mon Oct 23 16:43:35 EDT 2017: Shutting down Derby engine
+Sat Nov 04 14:50:50 EDT 2017: Shutting down Derby engine
 ----------------------------------------------------------------
-Mon Oct 23 16:43:35 EDT 2017:
-Shutting down instance a816c00e-015f-4abb-6df5-ffffb3cfbe20 on database directory C:\Users\Asus\Documents\GitHub\FoodMood\database\foodmood with class loader sun.misc.Launcher$AppClassLoader@1d44bcfa 
+Sat Nov 04 14:50:50 EDT 2017:
+Shutting down instance a816c00e-015f-8828-6cf3-ffffb3cfbe20 on database directory C:\Users\Asus\Documents\GitHub\FoodMood\database\foodmood with class loader sun.misc.Launcher$AppClassLoader@1d44bcfa 
 ----------------------------------------------------------------

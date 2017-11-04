@@ -25,7 +25,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ButtonType;
 import javafx.stage.Stage;
-//import navigation.MainMenuController; //TODO: Update handleLogin, then DELETE
+import utility.Alerts;
+import utility.Alerts.AlertGenerator;
 
 /**
  * FXML Controller Class
@@ -60,23 +61,14 @@ public class LoginController implements Initializable{
     public void login(String username, String password) {
       if (validate(username, password)) {
         // Send Welcome message
-        // Used examples from http://code.makery.ch/blog/javafx-dialogs-official/
-        Alert alert = new Alert(AlertType.INFORMATION);
-        alert.setTitle("Login Success");
-        alert.setHeaderText(null);
-        alert.setContentText("Welcome, " + username);
-        Optional<ButtonType> result = alert.showAndWait();
+        Optional<ButtonType> result = AlertGenerator.generateAlert(
+                AlertType.INFORMATION, "Login Success", null, "Welcome, " + username).showAndWait();
         if (result.get() == ButtonType.OK) {
             showMainMenu();
         } 
-        
       } else {
         // Send error message and clear the username and password text field
-        Alert alert = new Alert(AlertType.ERROR);
-        alert.setTitle("Error");
-        alert.setHeaderText("Wrong username or password");
-        alert.setContentText("Please check the username and password");
-        alert.showAndWait();
+        AlertGenerator.generateAlert(AlertType.ERROR, "Error", "Wrong username or password", "Please check the username and password").showAndWait();
         login_loginButton.setDisable(false);
         clearFields();
         login_username.requestFocus();
@@ -92,23 +84,13 @@ public class LoginController implements Initializable{
         try {
             if (Database.DatabaseHandler.createAccount(username, password)) {
                 // Send Welcome message
-                // Used examples from http://code.makery.ch/blog/javafx-dialogs-official/
-                Alert alert = new Alert(AlertType.INFORMATION);
-                alert.setTitle("Registration Success");
-                alert.setHeaderText(null);
-                alert.setContentText("Account Created \nWelcome, " + username);
-                Optional<ButtonType> result = alert.showAndWait();
+                Optional<ButtonType> result = AlertGenerator.generateAlert(AlertType.INFORMATION, "Registration Success", null, "Account Created \nWelcome, " + username).showAndWait();
                 if (result.get() == ButtonType.OK) {
                     showMainMenu();
                 } 
             } else {
                 // Send error dialog if username already exists/failed to connect to db
-                // Used examples from http://code.makery.ch/blog/javafx-dialogs-official/
-                Alert alert = new Alert(AlertType.ERROR);
-                alert.setTitle("Error");
-                alert.setHeaderText("The username already exists");
-                alert.setContentText("Please try again with a different username");
-                alert.showAndWait();
+                AlertGenerator.generateAlert(AlertType.ERROR, "Error", "The username already exists", "Please try again with a different username").showAndWait();
                 login_loginButton.setDisable(false);
                 login_username.requestFocus();
                 clearFields();
@@ -146,12 +128,7 @@ public class LoginController implements Initializable{
         login_loginButton.setDisable(true);
         if (isNull()) {
             // Send error dialog if either textfields are empty
-            // Used examples from http://code.makery.ch/blog/javafx-dialogs-official/
-            Alert alert = new Alert(AlertType.ERROR);
-            alert.setTitle("Error");
-            alert.setHeaderText("Empty username or password");
-            alert.setContentText("Please check the username and password");
-            alert.showAndWait();
+            AlertGenerator.generateAlert(AlertType.ERROR, "Error", "Wrong username or password", "Please check the username and password").showAndWait();
             login_loginButton.setDisable(false);
             login_username.requestFocus();
         } else {
@@ -168,12 +145,7 @@ public class LoginController implements Initializable{
     private void handleRegister(ActionEvent event) {
         if(isNull()) {
             // Send error dialog if either textfields are empty
-            // Used examples from http://code.makery.ch/blog/javafx-dialogs-official/
-            Alert alert = new Alert(AlertType.ERROR);
-            alert.setTitle("Error");
-            alert.setHeaderText("Empty username or password");
-            alert.setContentText("Please enter a username and password to create a new account");
-            alert.showAndWait();
+            AlertGenerator.generateAlert(AlertType.ERROR, "Error", "Empty username or password", "Please enter a username and password to create a new account").showAndWait();
             login_loginButton.setDisable(false);
             login_username.requestFocus();
             clearFields(); 

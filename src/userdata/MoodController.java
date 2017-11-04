@@ -29,6 +29,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
+import utility.Alerts;
 
 /**
  * FXML Controller Class
@@ -135,21 +136,14 @@ public class MoodController implements Initializable {
     private void deleteMood(ActionEvent event) {
         if (mood_moodListTable.getSelectionModel().isEmpty()) {
             mood_deleteMood.setDisable(true);
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error");
-            alert.setHeaderText("Please select a row and try again");
-            alert.setContentText("Please select a row and try again");
-            alert.showAndWait();
+            Alerts.AlertGenerator.generateAlert(Alert.AlertType.ERROR, "Error", "Please select a row and try again", "Please select a row and try again").showAndWait();
             mood_moodListTable.requestFocus();
             mood_deleteMood.setDisable(false);
         } else {
             mood_deleteMood.setDisable(true);
             Mood temp = mood_moodListTable.getSelectionModel().getSelectedItem();
             // Ask for confirmation
-            Alert alert = new Alert(AlertType.CONFIRMATION);
-            alert.setTitle("Delete Mood?");
-            alert.setHeaderText("Delete Mood");
-            alert.setContentText("Delete Mood " + temp.getMoodName() + "?");
+            Alert alert = Alerts.AlertGenerator.generateAlert(Alert.AlertType.CONFIRMATION, "Delete Mood?", "Delete Mood", "Delete Mood " + temp.getMoodName() + "?");
             ButtonType yes = new ButtonType("Yes");
             ButtonType no = new ButtonType("No");
             alert.getButtonTypes().setAll(yes, no);
@@ -159,22 +153,13 @@ public class MoodController implements Initializable {
                 mood_deleteMood.setDisable(false);
                 boolean delResult = database.Database.DatabaseHandler.deleteMood(temp.getMoodId());
                 if (delResult) {
-                    // Send Welcome message
-                    // Used examples from http://code.makery.ch/blog/javafx-dialogs-official/
-                    alert = new Alert(AlertType.INFORMATION);
-                    alert.setTitle("Delete Mood Success");
-                    alert.setHeaderText(null);
-                    alert.setContentText("Mood Deleted");
-                    alert.showAndWait();
+                    // Send Welcome alert
+                    Alerts.AlertGenerator.generateAlert(Alert.AlertType.INFORMATION, "Delete Mood Success", null, "Mood Deleted").showAndWait();
                     // Refresh mood list
                     initializeMoodTable();
                 } else {
-                    // Send error message if failed
-                    alert = new Alert(AlertType.ERROR);
-                    alert.setTitle("Error");
-                    alert.setHeaderText("Failed to delete Mood");
-                    alert.setContentText("Please try again");
-                    alert.showAndWait();
+                    // Send error alert
+                    Alerts.AlertGenerator.generateAlert(Alert.AlertType.ERROR, "Error", "Failed to delete Mood", "Please try again").showAndWait();
                 }
                 mood_deleteMood.setDisable(false);
             } else {
@@ -203,11 +188,7 @@ public class MoodController implements Initializable {
     private void viewMoodDetails(ActionEvent event) {
         if (mood_moodListTable.getSelectionModel().isEmpty()) {
             mood_viewDetails.setDisable(true);
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error");
-            alert.setHeaderText("Please select a row and try again");
-            alert.setContentText("Please select a row and try again");
-            alert.showAndWait();
+            Alerts.AlertGenerator.generateAlert(Alert.AlertType.ERROR, "Error", "Please select a row and try again", "Please select a row and try again").showAndWait();
             mood_moodListTable.requestFocus();
             mood_viewDetails.setDisable(false);
         } else {

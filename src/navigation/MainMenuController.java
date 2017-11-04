@@ -4,6 +4,8 @@ package navigation;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.application.Platform;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -32,6 +34,8 @@ public class MainMenuController implements Initializable {
     private Text mainmenu_userid;
     @FXML
     private Button mainmenu_viewMoods;
+    @FXML
+    private Button mainmenu_foodMoodList;
     
     /**
      * Initializes the controller class
@@ -88,6 +92,15 @@ public class MainMenuController implements Initializable {
         } catch (IOException except) {
             System.out.println("Error occured: " + except.toString());
         }
+    }
+    
+    /**
+     * Closes this FoodMood application
+     * @param event "Exit FoodMood" button action
+     */
+    @FXML
+    private void exitApplication(ActionEvent event) {
+        Platform.exit();
     }
     
 }

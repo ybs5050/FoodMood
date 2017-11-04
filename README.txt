@@ -1,31 +1,23 @@
-USE CASE #1: Add Mood to the application. 
+username: test
+password: test
 
-Decorator Implementation - Youngmin Son
-app.java - Line 48
-MoodController.java - Line 116
+Use Case #1: View Moods, View Mood Details
+(Login -> Main Menu -> "View Moods" -> Select a Mood row from the table
+ 	-> "View Mood Details")
 
-Input prompt Implementation - Youngmin Son
-Login.fxml - Line 19, 20
-AddMood.fxml - Line 18,19,20
+Use Case #2: Filter FoodMood by date 
+(Login -> Main Menu -> "View Past Food/Mood" -> Select dates -> "Filter")
 
-Object-Oriented Pattern: Iterator - Justin Grant
-FoodMoodController.java - Line 22, 148-169
-Description: Rather than implementing a custom iterator or overriding the 
-standard Java libraries iterator, I utilized the existing iterator from the
-Java Collection framework. By using this pattern, we can cut down significantly
-on the need for extra code (eg. using for loops to iterate through a list).
-Other classes that will be affected are moodController and foodController (once
-these classes are built). Iterator code for these classes will be identitical 
-or very similar depending on the needed operations as defined by the use cases. 
+Use Case #3: Add FoodMood to Favorites and Show only favorites
+(Login -> Main Menu -> "View Past Food/Mood" -> 
+      Select a FoodMood row from the table -> "Add To Favorites" -> "Show Only Favorites")
 
-User Interface Pattern: Sorting/Filtering Data - Justin Grant
-FoodMood.fxml - Line 15-20, 23-25
-FoodMoodController.fxml - Line 159-169
-Description: Since the Food/Mood list contains a list of all Food/Mood entries,
-it will theoretically be the longest list in the program. This requires more
-advanced data management in order for users to be able to easily find the data
-they are looking for. The classes above have been modified to allow for sorting
-(ascending/descending) by column, and entering start/end dates for filtering by
-date. This should allow the user to more easily find needed data entries from
-this list. Start/end date filtering is handled via list iteration (see above), 
-and column sorting is handled via the "sortable" property in javafx TableColumn.
+Use Case #4: View Food/Mood Details 
+(Login -> Main Menu -> "View Past Food/Mood" -> 
+      Select a FoodMood row from the table -> "View Food/Mood Details")
+
+Refactorimg Implementation
+
+Youngmin Son- Create an Alert object generator class to remove duplicate code usage.
+Classes used: Alerts, LoginController, FoodMoodListController, MoodListController,
+FoodMoodController, MoodController

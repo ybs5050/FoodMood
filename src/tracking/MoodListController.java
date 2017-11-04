@@ -22,6 +22,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import utility.Alerts;
 
 /**
  * FXML Controller Class
@@ -69,13 +70,8 @@ public class MoodListController implements Initializable {
     private void addMood(String moodName, String moodDescription, String moodSeverity, String moodTimeOccured) {
         boolean result = database.Database.DatabaseHandler.createMood(moodName, moodDescription, moodSeverity, moodTimeOccured);
         if (result) {
-            // If success send Confirmation Message
-            // Used examples from http://code.makery.ch/blog/javafx-dialogs-official/
-            Alert alert = new Alert(AlertType.INFORMATION);
-            alert.setTitle("Add Mood Success");
-            alert.setHeaderText(null);
-            alert.setContentText("Added Mood " + moodName);
-            Optional<ButtonType> resultAlert = alert.showAndWait();
+            // If success send confirmation alert
+            Optional<ButtonType> resultAlert = Alerts.AlertGenerator.generateAlert(Alert.AlertType.INFORMATION, "Add Mood Success", null, "Added Mood " + moodName).showAndWait();
             if (resultAlert.get() == ButtonType.OK) {
                 // Close Add Mood Scene
                 //temp.close();
@@ -83,12 +79,8 @@ public class MoodListController implements Initializable {
                 clearFields();
             } 
         } else {
-            // Send error message and clear the username and password text field
-            Alert alert = new Alert(AlertType.ERROR);
-            alert.setTitle("Error");
-            alert.setHeaderText("Wrong username or password");
-            alert.setContentText("Please check the username and password");
-            alert.showAndWait();
+            // Send error alert 
+            Alerts.AlertGenerator.generateAlert(Alert.AlertType.ERROR, "Error", "Wrong username or password", "Please check the username and password").showAndWait();
             addMood_addMood.setDisable(false);
             clearFields();
             addMood_moodName.requestFocus();
@@ -105,13 +97,8 @@ public class MoodListController implements Initializable {
         // Disable the add mood button while attempting to add mood to the database
         addMood_addMood.setDisable(true);
         if (isNull()) {
-            // Send error dialog if mood name or severity level is empty
-            // Used examples from http://code.makery.ch/blog/javafx-dialogs-official/
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error");
-            alert.setHeaderText("Empty mood name or mood severity level");
-            alert.setContentText("Please try again");
-            alert.showAndWait();
+            // Send error alert
+            Alerts.AlertGenerator.generateAlert(Alert.AlertType.ERROR, "Error", "Empty mood name or mood severity level", "Please try again").showAndWait();
             addMood_addMood.setDisable(false);
             addMood_moodName.requestFocus();
         } else {
@@ -124,11 +111,7 @@ public class MoodListController implements Initializable {
                 // Send error dialog if user entered invalid time fomrat
                 // Used examples from http://code.makery.ch/blog/javafx-dialogs-official/
                 if(!addMood_moodTimeOccured.getText().isEmpty()) {
-                    Alert alert = new Alert(Alert.AlertType.ERROR);
-                    alert.setTitle("Error");
-                    alert.setHeaderText("Wrong Time Format");
-                    alert.setContentText("Please try again using HH:mm format");
-                    alert.showAndWait();
+                    Alerts.AlertGenerator.generateAlert(Alert.AlertType.ERROR, "Error", "Wrong Time Format", "Please try again using HH:mm format").showAndWait();
                     addMood_moodTimeOccured.clear();
                     addMood_addMood.setDisable(false);
                     addMood_moodName.requestFocus();

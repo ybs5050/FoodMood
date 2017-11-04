@@ -17,6 +17,7 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import utility.Alerts;
        
 /**
  * FXML Controller Class
@@ -113,11 +114,7 @@ public class FoodMoodListController implements Initializable {
       if(isNull()) {
           // 1 or more entries are illegal
           addFoodMood_addFoodMood.setDisable(true);
-          Alert alert = new Alert(Alert.AlertType.ERROR);
-          alert.setTitle("Error");
-          alert.setHeaderText("Please check if all entries are complete");
-          alert.setContentText("Please try again");
-          alert.showAndWait();
+          Alerts.AlertGenerator.generateAlert(Alert.AlertType.ERROR, "Error", "Please check if all entries are complete", "Please try again").showAndWait();
           addFoodMood_addFoodMood.setDisable(false);
           addFoodMood_moodName.requestFocus();    
       } else {
@@ -140,18 +137,12 @@ public class FoodMoodListController implements Initializable {
           boolean result = database.Database.DatabaseHandler.addFoodMood(foodName, foodMoodDescription, foodMoodDate,
                   isFavorite);
           if(result) {
-              Alert alert = new Alert(Alert.AlertType.INFORMATION);
-              alert.setTitle("Add Food Mood Success");
-              alert.setHeaderText(null);
-              alert.setContentText("Food Mood Added");
-              alert.showAndWait();
+              // Send success alert
+              Alerts.AlertGenerator.generateAlert(Alert.AlertType.INFORMATION, "Add Food Mood Success", null, "Food Mood Added").showAndWait();
               clearFields();
           } else {
-              Alert alert = new Alert(Alert.AlertType.ERROR);
-              alert.setTitle("Error");
-              alert.setHeaderText("Failed to add FoodMood to the database");
-              alert.setContentText("Please try again");
-              alert.showAndWait();
+              // Send error alert
+              Alerts.AlertGenerator.generateAlert(Alert.AlertType.ERROR, "Error", "Failed to add FoodMood to the database", "Please try again").showAndWait();
           }
       }
   }

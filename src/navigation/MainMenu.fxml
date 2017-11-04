@@ -7,7 +7,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="navigation.MainMenuController">
+<AnchorPane id="AnchorPane" prefHeight="286.0" prefWidth="343.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="navigation.MainMenuController">
    <children>
       <Text fx:id="mainmenu_username" layoutX="14.0" layoutY="43.0" strokeType="OUTSIDE" strokeWidth="0.0" text="NAME PLACEHOLDER" wrappingWidth="346.12109375">
          <font>
@@ -15,7 +15,8 @@
          </font>
       </Text>
       <Text fx:id="mainmenu_userid" layoutX="14.0" layoutY="62.0" strokeType="OUTSIDE" strokeWidth="0.0" text="User ID PLACEHOLDER" />
-      <Button fx:id="mainmenu_viewMoods" layoutX="14.0" layoutY="89.0" mnemonicParsing="false" onAction="#viewMoodList" prefHeight="23.0" prefWidth="102.0" text="View Moods" />
-      <Button fx:id="mainmenu_foodMoodList" layoutX="14.0" layoutY="125.0" mnemonicParsing="false" onAction="#viewFoodMoodList" prefHeight="55.0" prefWidth="102.0" text="View Past&#10;Food/Mood" />
+      <Button fx:id="mainmenu_viewMoods" layoutX="14.0" layoutY="89.0" mnemonicParsing="false" onAction="#viewMoodList" prefHeight="55.0" prefWidth="333.0" text="View Moods" />
+      <Button fx:id="mainmenu_foodMoodList" layoutX="14.0" layoutY="151.0" mnemonicParsing="false" onAction="#viewFoodMoodList" prefHeight="55.0" prefWidth="333.0" text="View Past&#10;Food/Mood" />
+      <Button layoutX="14.0" layoutY="213.0" mnemonicParsing="false" onAction="#exitApplication" prefHeight="55.0" prefWidth="333.0" text="Exit FoodFood" />
    </children>
 </AnchorPane>

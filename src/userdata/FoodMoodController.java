@@ -40,6 +40,7 @@ import javafx.scene.control.Label;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import tracking.FoodMoodDetailController;
+import utility.Alerts;
 
 /**
  * FXML Controller Class
@@ -194,13 +195,9 @@ public class FoodMoodController implements Initializable {
     @FXML
     private void deleteFoodMood(ActionEvent event) throws ParseException {
         if(foodMood_foodMoodListTable.getSelectionModel().isEmpty()) {
-            // Send error message if no row is selected
+            // Send error alert if no row is selected
             foodMood_deleteFoodMood.setDisable(true);
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error");
-            alert.setHeaderText("Please select a row to delete and try again");
-            alert.setContentText("Please select a row delete and try again");
-            alert.showAndWait();
+            Alerts.AlertGenerator.generateAlert(Alert.AlertType.ERROR, "Error", "Please select a row to delete and try againt", "Please select a row delete and try again").showAndWait();
             foodMood_foodMoodListTable.requestFocus();
             foodMood_deleteFoodMood.setDisable(false);
         } else {
@@ -208,10 +205,7 @@ public class FoodMoodController implements Initializable {
             FoodMood selectedFoodMood = foodMood_foodMoodListTable.getSelectionModel().getSelectedItem();
             int foodMoodID = foodMood_foodMoodListTable.getSelectionModel().getSelectedItem().getFoodMoodID();
             // Ask for confirmation
-            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-            alert.setTitle("Delete Food Mood?");
-            alert.setHeaderText("Delete Food Mood");
-            alert.setContentText("Delete Food Mood ?");
+            Alert alert = Alerts.AlertGenerator.generateAlert(Alert.AlertType.CONFIRMATION, "Delete Food Mood?", "Delete Food Mood", "Delete Food Mood ?");
             ButtonType yes = new ButtonType("Yes");
             ButtonType no = new ButtonType("No");
             alert.getButtonTypes().setAll(yes, no);
@@ -219,19 +213,13 @@ public class FoodMoodController implements Initializable {
             if(result.get() == yes) {
                 // Delete selected row
                 boolean deleteResult = database.Database.DatabaseHandler.deleteFoodMood(foodMoodID);
-                alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Success");
-                alert.setHeaderText("Delete Success");
-                alert.setContentText("Food Mood Deleted");
-                alert.showAndWait();
+                // Send sucess alert
+                Alerts.AlertGenerator.generateAlert(Alert.AlertType.INFORMATION, "Success", "Delete Success", "Food Mood Deleted").showAndWait();
                 foodMood_foodMoodListTable.getItems().remove(selectedFoodMood);
                 initializeFoodMoodTable();
             } else {
-                alert = new Alert(Alert.AlertType.ERROR);
-                alert.setTitle("Error");
-                alert.setHeaderText("Delete Failed");
-                alert.setContentText("Delete Food Mood Failed. Please try again");
-                alert.showAndWait();
+                // Send error alert
+                Alerts.AlertGenerator.generateAlert(Alert.AlertType.ERROR, "Error", "Delete Failed", "Delete Food Mood Failed. Please try again").showAndWait();
             }
         }
     }
@@ -256,11 +244,7 @@ public class FoodMoodController implements Initializable {
         if(foodMood_foodMoodListTable.getSelectionModel().isEmpty()) {
             // No row selected, send error alert
             foodMood_deleteFoodMood.setDisable(true);
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error");
-            alert.setHeaderText("Please select a row to view details and try again");
-            alert.setContentText("Please select a row to view details and try again");
-            alert.showAndWait();
+            Alerts.AlertGenerator.generateAlert(Alert.AlertType.ERROR, "Error", "Please select a row to view details and try again", "Please select a row to view details and try again").showAndWait();
             foodMood_foodMoodListTable.requestFocus();
             foodMood_deleteFoodMood.setDisable(false);
         } else {
@@ -325,11 +309,7 @@ public class FoodMoodController implements Initializable {
         if(foodMood_startDatePicker.getValue() == null || foodMood_endDatePicker.getValue() == null) {
             // Send error message if either date picker is empty
             foodMood_filter.setDisable(true);
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error");
-            alert.setHeaderText("Select proper dates");
-            alert.setContentText("Please select a date for BOTH Start date and End date");
-            Optional<ButtonType> result = alert.showAndWait();
+            Optional<ButtonType> result = Alerts.AlertGenerator.generateAlert(Alert.AlertType.ERROR, "Error", "Select proper dates", "Please select a date for BOTH Start date and End date").showAndWait();
             if (result.get() == ButtonType.OK) {
                 foodMood_filter.setDisable(false);
                 foodMood_startDatePicker.requestFocus();
@@ -344,11 +324,8 @@ public class FoodMoodController implements Initializable {
             if(start.after(end)) {
                 // Start date is after end date, send error message
                 foodMood_filter.setDisable(true);
-                Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setTitle("Error");
-                alert.setHeaderText("Select proper dates");
-                alert.setContentText("Start date is after End date. Please try again");
-                Optional<ButtonType> result = alert.showAndWait();
+                Optional<ButtonType> result = Alerts.AlertGenerator.generateAlert(
+                        Alert.AlertType.ERROR, "Error", "Select proper dates", "Start date is after End date. Please try again").showAndWait();
                 if (result.get() == ButtonType.OK) {
                     foodMood_filter.setDisable(false);
                     foodMood_startDatePicker.requestFocus();
@@ -402,21 +379,13 @@ public class FoodMoodController implements Initializable {
         if(foodMood_foodMoodListTable.getSelectionModel().isEmpty()) {
             // No row selected, send error alert
             foodMood_showOnlyFavorites.setDisable(true);
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error");
-            alert.setHeaderText("Please select a row to view details and try again");
-            alert.setContentText("Please select a row to view details and try again");
-            alert.showAndWait();
+            Alerts.AlertGenerator.generateAlert(Alert.AlertType.ERROR, "Error", "Please select a row to view details and try again", "Please select a row to view details and try again").showAndWait();
             foodMood_foodMoodListTable.requestFocus();
             foodMood_showOnlyFavorites.setDisable(false);
         } else {
             if(foodMood_foodMoodListTable.getSelectionModel().getSelectedItem().getIsFavoriteBoolean()) {
                 // Already in favorites
-                Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setTitle("Error");
-                alert.setHeaderText("Already in Favorites");
-                alert.setContentText("This FoodMood is already in Favorites");
-                alert.showAndWait();
+                Alerts.AlertGenerator.generateAlert(Alert.AlertType.ERROR, "Error", "Already in Favorites", "This FoodMood is already in Favorites").showAndWait();
                 return;
             }
             // Update database
@@ -424,18 +393,10 @@ public class FoodMoodController implements Initializable {
             boolean results = database.Database.DatabaseHandler.setFavorites(true, foodMoodID);
             if (results) {
                 // Update successful
-                Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Success");
-                alert.setHeaderText("Food Mood Update Success");
-                alert.setContentText("Food Mood Added to Favorites");
-                alert.showAndWait();
+                Alerts.AlertGenerator.generateAlert(Alert.AlertType.INFORMATION, "Success", "Food Mood Update Success", "Food Mood Added to Favorites").showAndWait();
                 initializeFoodMoodTable();
             } else {
-                Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setTitle("Error");
-                alert.setHeaderText("Update Failed");
-                alert.setContentText("Update Failed. Please try again");
-                alert.showAndWait();
+                Alerts.AlertGenerator.generateAlert(Alert.AlertType.ERROR, "Error", "Update Failed", "Update Failed. Please try again").showAndWait();
             }
         }
     }
@@ -449,21 +410,13 @@ public class FoodMoodController implements Initializable {
         if(foodMood_foodMoodListTable.getSelectionModel().isEmpty()) {
             // No row selected, send error alert
             foodMood_showOnlyFavorites.setDisable(true);
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error");
-            alert.setHeaderText("Please select a row to view details and try again");
-            alert.setContentText("Please select a row to view details and try again");
-            alert.showAndWait();
+            Alerts.AlertGenerator.generateAlert(Alert.AlertType.ERROR, "Error", "Please select a row to view details and try again", "Please select a row to view details and try again").showAndWait();
             foodMood_foodMoodListTable.requestFocus();
             foodMood_showOnlyFavorites.setDisable(false);
         } else {
             if(!foodMood_foodMoodListTable.getSelectionModel().getSelectedItem().getIsFavoriteBoolean()) {
                 // Already not in favorites
-                Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setTitle("Error");
-                alert.setHeaderText("Not in Favorites");
-                alert.setContentText("This FoodMood is not in Favorites");
-                alert.showAndWait();
+                Alerts.AlertGenerator.generateAlert(Alert.AlertType.ERROR, "Error", "Not in Favorites", "This FoodMood is not in Favorites").showAndWait();
                 return;
             }
             // Update database
@@ -471,18 +424,11 @@ public class FoodMoodController implements Initializable {
             boolean results = database.Database.DatabaseHandler.setFavorites(false, foodMoodID);
             if (results) {
                 // Update successful
-                Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Success");
-                alert.setHeaderText("Food Mood Update Success");
-                alert.setContentText("Food Mood Removed from Favorites");
-                alert.showAndWait();
+                Alerts.AlertGenerator.generateAlert(Alert.AlertType.INFORMATION, "Success", "Food Mood Update Success", "Food Mood Removed from Favorites").showAndWait();
                 initializeFoodMoodTable();
             } else {
-                Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setTitle("Error");
-                alert.setHeaderText("Update Failed");
-                alert.setContentText("Update Failed. Please try again");
-                alert.showAndWait();
+                // Update failed
+                Alerts.AlertGenerator.generateAlert(Alert.AlertType.ERROR, "Error", "Update Failed", "Update Failed. Please try again").showAndWait();
             }
         }
     }
@@ -494,11 +440,7 @@ public class FoodMoodController implements Initializable {
     @FXML
     private void generateReport(ActionEvent event) throws FileNotFoundException, UnsupportedEncodingException {
         if(foodMoodList.isEmpty()) {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error");
-            alert.setHeaderText("No FoodMood");
-            alert.setContentText("No FoodMood Exists, Cannot generate report");
-            alert.showAndWait();
+            Alerts.AlertGenerator.generateAlert(Alert.AlertType.ERROR, "Error", "No FoodMood", "No FoodMood Exists, Cannot generate report").showAndWait();
         } else {
             String fileName = "FoodMoodReport " + 
                 new SimpleDateFormat("yyyyMMdd_HHmmss").format(Calendar.getInstance().getTime());
@@ -515,11 +457,7 @@ public class FoodMoodController implements Initializable {
             }
             writer.close();
             // Update successful
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Success");
-            alert.setHeaderText("Please check \"reports\" folder");
-            alert.setContentText("Report Generated. File Name: " + fileName);
-            alert.showAndWait();
+            Alerts.AlertGenerator.generateAlert(Alert.AlertType.INFORMATION, "Success", "Please check \"reports\" folder", "Report Generated. File Name: " + fileName).showAndWait();
         } 
     }
     
