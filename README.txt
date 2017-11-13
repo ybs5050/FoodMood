@@ -21,3 +21,6 @@ Refactorimg Implementation
 Youngmin Son- Create an Alert object generator class to remove duplicate code usage.
 Classes used: Alerts, LoginController, FoodMoodListController, MoodListController,
 FoodMoodController, MoodController
+
+James - Removed dead code & lazy class (testharness package, foodfavorite package)
+        
