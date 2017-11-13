@@ -23,4 +23,8 @@ Classes used: Alerts, LoginController, FoodMoodListController, MoodListControlle
 FoodMoodController, MoodController
 
 James - Removed dead code & lazy class (testharness package, foodfavorite package)
-        
+
+
+Justin Grant- Updated commenting and javadoc parameters (classes used: FoodMoodListController.java, FoodFavorite.java, Mood.java). 
+    Removed dead code (LoginController.java, MoodListController.java, MoodController.java). 
+    Removed lazy class (FoodFavorite.java), safely deleted with usage search and tested to ensure continued functionality upon deletion. 
