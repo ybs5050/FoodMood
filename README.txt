@@ -21,3 +21,5 @@ Refactorimg Implementation
 Youngmin Son- Create an Alert object generator class to remove duplicate code usage.
 Classes used: Alerts, LoginController, FoodMoodListController, MoodListController,
 FoodMoodController, MoodController
+
+Justin Grant- Updated commenting and javadoc parameters (classes used: FoodMoodListController.java, FoodFavorite.java, Mood.java). Removed dead code (LoginController.java, MoodListController.java, MoodController.java). Removed lazy class (FoodFavorite.java), safely deleted with usage search and tested to ensure continued functionality upon deletion. 
