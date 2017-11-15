@@ -16,6 +16,10 @@ Use Case #4: View Food/Mood Details
 (Login -> Main Menu -> "View Past Food/Mood" -> 
       Select a FoodMood row from the table -> "View Food/Mood Details")
 
+Use Case #5: Generate Report
+(Login -> Main Menu -> "View Past Food/Mood" -> 
+      "Generate Report" -> Check the files in "reports" folder)
+
 Refactorimg Implementation
 
 Youngmin Son- Create an Alert object generator class to remove duplicate code usage.
